@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import produto from "@/assets/produto.asset.json";
+import produto from "@/assets/produto-transparente.png";
 import {
   ShieldCheck,
   Flame,
