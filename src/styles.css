@@ -32,48 +32,151 @@
   --color-ring: var(--ring);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
-  --color-warm: var(--warm);
   --font-display: "Poppins", system-ui, sans-serif;
 }
 
 :root {
   --radius: 1rem;
-  --background: oklch(0.985 0.012 80);
-  --foreground: oklch(0.22 0.04 40);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.04 40);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.04 40);
-  --primary: oklch(0.72 0.18 50);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.04 70);
-  --secondary-foreground: oklch(0.3 0.06 40);
-  --muted: oklch(0.96 0.02 70);
-  --muted-foreground: oklch(0.5 0.04 50);
-  --accent: oklch(0.92 0.08 60);
-  --accent-foreground: oklch(0.25 0.06 40);
-  --destructive: oklch(0.58 0.22 27);
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.12 0.005 60);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.12 0.005 60);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.72 0.2 50);
+  --primary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.16 0.005 60);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.18 0.005 60);
+  --muted-foreground: oklch(0.7 0.01 60);
+  --accent: oklch(0.22 0.05 50);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0.02 60);
-  --input: oklch(0.9 0.02 60);
-  --ring: oklch(0.72 0.18 50);
-  --success: oklch(0.62 0.16 145);
-  --success-foreground: oklch(1 0 0);
-  --warm: oklch(0.98 0.025 75);
+  --border: oklch(0.22 0.01 60);
+  --input: oklch(0.22 0.01 60);
+  --ring: oklch(0.72 0.2 50);
+  --success: oklch(0.7 0.18 145);
+  --success-foreground: oklch(0.1 0 0);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.98 0.03 75) 0%, oklch(0.93 0.08 60) 100%);
-  --gradient-primary: linear-gradient(135deg, oklch(0.75 0.18 55) 0%, oklch(0.65 0.2 35) 100%);
-  --shadow-warm: 0 20px 50px -15px oklch(0.65 0.2 40 / 0.35);
-  --shadow-card: 0 10px 30px -10px oklch(0.5 0.1 40 / 0.18);
+  --gradient-primary: linear-gradient(135deg, oklch(0.78 0.2 60) 0%, oklch(0.62 0.22 35) 100%);
+  --gradient-radial-orange: radial-gradient(circle at 50% 50%, oklch(0.55 0.2 45 / 0.35) 0%, transparent 60%);
+  --shadow-orange: 0 10px 40px -10px oklch(0.7 0.22 45 / 0.6), 0 0 60px oklch(0.7 0.22 45 / 0.25);
 }
 
 @layer base {
   * { border-color: var(--color-border); }
+  html { background-color: #000; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-display);
     font-size: 17px;
+    -webkit-font-smoothing: antialiased;
   }
   h1,h2,h3 { font-weight: 800; letter-spacing: -0.02em; }
+}
+
+/* Infinite black background with subtle starfield + orange glow */
+.bg-infinite {
+  background:
+    radial-gradient(ellipse at 50% 30%, oklch(0.25 0.12 45 / 0.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, oklch(0.2 0.1 35 / 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 20% 70%, oklch(0.18 0.08 50 / 0.2) 0%, transparent 45%),
+    #000;
+  position: relative;
+  overflow: hidden;
+}
+.bg-infinite::before {
+  content: "";
+  position: absolute; inset: -50%;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,180,100,0.4), transparent),
+    radial-gradient(1px 1px at 85% 20%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 10% 50%, rgba(255,200,120,0.3), transparent);
+  background-size: 400px 400px;
+  opacity: 0.5;
+  animation: drift 60s linear infinite;
+  pointer-events: none;
+}
+@keyframes drift {
+  from { transform: translate(0,0); }
+  to { transform: translate(-200px, -200px); }
+}
+
+/* 3D product showcase */
+.product-3d {
+  perspective: 1200px;
+  position: relative;
+}
+.product-3d-inner {
+  animation: float3d 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 30px 40px rgba(255,120,40,0.35)) drop-shadow(0 0 60px rgba(255,140,50,0.25));
+}
+@keyframes float3d {
+  0%, 100% { transform: rotateY(-12deg) rotateX(4deg) translateY(0); }
+  50% { transform: rotateY(12deg) rotateX(-2deg) translateY(-18px); }
+}
+.product-glow {
+  position: absolute; inset: -10%;
+  background: radial-gradient(circle, oklch(0.7 0.22 45 / 0.55) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%,100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.08); }
+}
+
+/* Orange CTA button with motion reflection */
+.btn-orange {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ff8a3d 0%, #ff5a1f 50%, #e63e0a 100%);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  padding: 1.1rem 2.2rem;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,180,120,0.4) inset,
+    0 12px 30px -8px rgba(255,90,30,0.6),
+    0 0 50px rgba(255,90,30,0.35);
+  transition: transform .2s ease, box-shadow .2s ease;
+  text-transform: uppercase;
+}
+.btn-orange:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 0 1px rgba(255,200,140,0.6) inset,
+    0 18px 40px -8px rgba(255,90,30,0.8),
+    0 0 80px rgba(255,120,40,0.55);
+}
+.btn-orange::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  animation: sheen 2.8s ease-in-out infinite;
+}
+@keyframes sheen {
+  0% { left: -100%; }
+  60%, 100% { left: 140%; }
+}
+
+.text-gradient-orange {
+  background: linear-gradient(135deg, #ffb072 0%, #ff6a2a 50%, #ff3d0a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
