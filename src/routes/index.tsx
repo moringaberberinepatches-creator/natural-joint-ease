@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import produto from "@/assets/produto.asset.json";
+import produto from "@/assets/produto-transparente.png";
 import {
   ShieldCheck,
   Flame,
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
         content:
           "Volte a caminhar, subir escadas e aproveitar a família — sem dor.",
       },
-      { property: "og:image", content: produto.url },
+      { property: "og:image", content: produto },
     ],
   }),
   component: Index,
@@ -98,7 +98,7 @@ function Index() {
             <div className="product-glow" />
             <div className="product-3d-inner relative z-10">
               <img
-                src={produto.url}
+                src={produto}
                 alt="Frasco 100DORES Plus suplemento natural"
                 className="w-full max-w-md mx-auto"
               />
