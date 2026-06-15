@@ -69,6 +69,8 @@
   html { background-color: #000; }
   body {
     background-color: var(--color-background);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='96' viewBox='0 0 56 96'><g fill='none' stroke='%23ff6a2a' stroke-width='1' stroke-opacity='0.14'><polygon points='28,1 55,16 55,47 28,62 1,47 1,16'/><polygon points='0,48 27,63 27,94 0,109'/><polygon points='56,48 29,63 29,94 56,109'/></g></svg>");
+    background-repeat: repeat;
     color: var(--color-foreground);
     font-family: var(--font-display);
     font-size: 17px;
