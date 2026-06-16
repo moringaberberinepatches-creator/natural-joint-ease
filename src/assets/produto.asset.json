@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "c03f3ddf-aa29-4d30-b002-6f512f8f81c7",
-  "project_id": "7c18d267-25b8-40dc-942e-c8d36fa8ea8d",
-  "url": "/__l5e/assets-v1/c03f3ddf-aa29-4d30-b002-6f512f8f81c7/100dores-produto.webp",
-  "r2_key": "a/v1/7c18d267-25b8-40dc-942e-c8d36fa8ea8d/c03f3ddf-aa29-4d30-b002-6f512f8f81c7/100dores-produto.webp",
-  "original_filename": "100dores-produto.webp",
-  "size": 69496,
   "content_type": "image/webp",
-  "created_at": "2026-06-11T18:03:41Z"
+  "created_at": "2026-06-11T18:03:41Z",
+  "original_filename": "100dores-produto.webp",
+  "project_id": "7f05d921-f089-40a8-baa6-96a73e47302a",
+  "r2_key": "a/v1/7f05d921-f089-40a8-baa6-96a73e47302a/c03f3ddf-aa29-4d30-b002-6f512f8f81c7/100dores-produto.webp",
+  "size": 69496,
+  "url": "/__l5e/assets-v1/c03f3ddf-aa29-4d30-b002-6f512f8f81c7/100dores-produto.webp",
+  "version": 1
 }
