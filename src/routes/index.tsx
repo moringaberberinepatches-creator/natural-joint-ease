@@ -18,22 +18,26 @@ import {
   ChevronDown,
   AlertTriangle,
   Heart,
+  ArrowRight,
 } from "lucide-react";
+
+const OFFICIAL_URL =
+  "https://5d7d7dfic5b81t1g8jvo3g2vzs.hop.clickbank.net/?&traffic_source=google&traffic_type=search&campaign=berberine_patch_us&creative=review_v1";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "100DORES Plus — Alívio Natural Das Dores Articulares em 21 Dias" },
+      { title: "Berberine Patch — A Descoberta Natural Que Está Transformando o Controle do Açúcar e da Gordura Abdominal" },
       {
         name: "description",
         content:
-          "Fórmula natural com 17 ativos + Cúrcuma. Volte a caminhar, dormir e viver SEM dor. Mais de 12.000 vidas transformadas. Garantia de 30 dias.",
+          "Conheça o adesivo natural de Berberina que age 24 horas por dia ajudando a equilibrar o açúcar no sangue, reduzir gordura abdominal e devolver sua energia. Acesse a página oficial.",
       },
-      { property: "og:title", content: "100DORES Plus — Liberte-se da Dor Articular" },
+      { property: "og:title", content: "Berberine Patch — Equilíbrio Metabólico Natural 24h" },
       {
         property: "og:description",
         content:
-          "Pare de perder os melhores momentos da sua vida por causa da dor. Existe uma solução natural.",
+          "Pare de lutar contra a balança e a glicose. Descubra o adesivo natural que está mudando vidas — acesse a página oficial do produtor.",
       },
       { property: "og:image", content: produto },
     ],
@@ -42,24 +46,18 @@ export const Route = createFileRoute("/")({
 });
 
 const benefits = [
-  { icon: Flame, title: "Combate a Inflamação na Raiz", text: "Neutraliza as citocinas pró-inflamatórias — a verdadeira causa da sua dor." },
-  { icon: Bone, title: "Fortalece Ossos e Articulações", text: "Densidade óssea reforçada, menos risco de quedas e fraturas." },
-  { icon: Sparkles, title: "4 Ativos de Alta Pureza", text: "Extraídos em laboratório com concentração até 6x maior que similares." },
-  { icon: Activity, title: "Devolve Sua Mobilidade", text: "Caminhar, subir escada, brincar com os netos — sem travar, sem dor." },
-  { icon: Leaf, title: "Regenera a Cartilagem", text: "Estimula a produção natural e retarda o desgaste articular." },
-  { icon: ShieldCheck, title: "100% Natural e Seguro", text: "Sem efeitos colaterais. Aprovado pela Anvisa. Pode usar todo dia." },
-];
-
-const offers = [
-  { qty: 1, label: "1 Frasco", sub: "Tratamento inicial — 30 dias", de: "R$ 297", price: "R$ 197", perUnit: "R$ 197,00 cada", cta: "Quero 1 Frasco", econ: "Economize R$ 100" },
-  { qty: 3, label: "3 Frascos", sub: "★ Mais escolhido • Tratamento completo 90 dias", de: "R$ 891", price: "R$ 397", perUnit: "R$ 132,33 cada", cta: "Quero 3 Frascos", highlight: true, econ: "Economize R$ 494" },
-  { qty: 5, label: "5 Frascos", sub: "Resultado máximo — 5 meses", de: "R$ 1.485", price: "R$ 597", perUnit: "R$ 119,40 cada", cta: "Quero 5 Frascos", econ: "Economize R$ 888" },
+  { icon: Activity, title: "Equilibra o Açúcar no Sangue", text: "A Berberina é estudada há anos por seu efeito direto no metabolismo da glicose." },
+  { icon: Flame, title: "Acelera a Queima de Gordura", text: "Ajuda o corpo a usar gordura como energia — especialmente na região abdominal." },
+  { icon: Sparkles, title: "Tecnologia Transdérmica", text: "O ativo é liberado lentamente pela pele, sem passar pelo estômago, sem enjoo." },
+  { icon: Bone, title: "Mais Energia o Dia Todo", text: "Sem picos e quedas de açúcar — você acorda disposto e termina o dia inteiro." },
+  { icon: Leaf, title: "100% Natural e Discreto", text: "Adesivo fino, sem cheiro, invisível por baixo da roupa. Use e esqueça." },
+  { icon: ShieldCheck, title: "Sem Comprimidos, Sem Dietas Loucas", text: "Funciona em silêncio enquanto você vive sua rotina normalmente." },
 ];
 
 const testimonials = [
-  { name: "Maria L., 58 anos", text: "Em três semanas voltei a caminhar sem aquela dor cortante no joelho. Eu já tinha aceitado viver assim... que bom que tentei mais uma vez." },
-  { name: "José R., 62 anos", text: "Acordo SEM aquela rigidez nas mãos. Voltei a abrir potes, dirigir longas distâncias e até trabalhar na marcenaria. Minha esposa não acredita." },
-  { name: "Cleusa M., 54 anos", text: "Meus netos pedem pra brincar e eu não preciso mais inventar desculpa. A dor nas costas sumiu. Recomendo de olhos fechados." },
+  { name: "Maria L., 58 anos", text: "Em poucas semanas minha glicose de jejum caiu de forma que meu médico fez questão de me perguntar o que eu estava fazendo diferente. Voltei a confiar no meu corpo." },
+  { name: "José R., 62 anos", text: "Eu vivia cansado, com aquela barriga teimosa que não saía. Comecei a usar o adesivo e em um mês minhas roupas começaram a caber de novo. Sem dieta maluca." },
+  { name: "Cleusa M., 54 anos", text: "Acabou aquela vontade descontrolada de doce no fim da tarde. Parece bobagem, mas mudou tudo na minha rotina e no meu peso." },
 ];
 
 function Index() {
@@ -67,7 +65,7 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
       <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-white text-center text-sm py-2 px-4 font-bold tracking-wide">
-        🔥 ÚLTIMAS 47 UNIDADES • FRETE GRÁTIS • ENTREGA EM 24H
+        🔥 OFERTA OFICIAL POR TEMPO LIMITADO • ESTOQUE REDUZIDO • ENVIO INTERNACIONAL
       </div>
 
       {/* HERO */}
@@ -75,26 +73,26 @@ function Index() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="inline-flex items-center gap-2 bg-white/5 border border-orange-500/30 backdrop-blur px-4 py-2 rounded-full text-xs font-bold text-orange-400 uppercase tracking-wider">
-              <Leaf className="w-4 h-4" /> Fórmula Natural • 17 Ativos
+              <Leaf className="w-4 h-4" /> Berberina • Tecnologia Transdérmica
             </span>
             <h1 className="mt-6 text-4xl md:text-6xl leading-[1.05] font-black uppercase">
-              A dor articular <span className="text-gradient-orange">não é</span> para sempre.
+              O segredo natural que está <span className="text-gradient-orange">equilibrando o açúcar</span> e derretendo a gordura abdominal.
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/80">
-              Mais de <strong className="text-orange-400">12.000 brasileiros</strong> acima dos 45 já redescobriram o prazer de
-              acordar sem dor, caminhar livremente e abraçar os netos sem medo.
-              <strong className="text-white"> Agora é a sua vez.</strong>
+              Milhares de pessoas acima dos 40 já trocaram comprimidos pesados e dietas restritivas pelo
+              <strong className="text-white"> Berberine Patch</strong> — um adesivo discreto que age 24 horas por dia
+              pela tecnologia transdérmica. <strong className="text-orange-400">Veja por que ele virou febre nos Estados Unidos.</strong>
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-              <a href="#ofertas" className="btn-orange text-base md:text-lg">
-                Quero viver sem dor agora
+              <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer sponsored" className="btn-orange text-base md:text-lg inline-flex items-center gap-2">
+                Acessar página oficial <ArrowRight className="w-5 h-5" />
               </a>
               <div className="flex items-center gap-2 text-sm text-white/70">
                 <div className="flex gap-0.5 text-orange-400">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-orange-400" />)}
                 </div>
-                4.9/5 • +12.000 clientes
+                4.9/5 • milhares de clientes
               </div>
             </div>
           </div>
@@ -104,7 +102,7 @@ function Index() {
             <div className="product-3d-inner relative z-10">
               <img
                 src={produto}
-                alt="Frasco 100DORES Plus suplemento natural"
+                alt="Berberine Patch — adesivo natural de berberina"
                 className="w-full max-w-md mx-auto"
               />
             </div>
@@ -120,10 +118,10 @@ function Index() {
       <section className="border-y border-white/10 bg-black">
         <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm">
           {[
-            { icon: Truck, t: "Frete Grátis" },
-            { icon: ShieldCheck, t: "Garantia 30 dias" },
-            { icon: Lock, t: "Compra Segura" },
-            { icon: BadgeCheck, t: "Aprovado Anvisa" },
+            { icon: Truck, t: "Envio Internacional" },
+            { icon: ShieldCheck, t: "Garantia 60 dias" },
+            { icon: Lock, t: "Checkout Oficial Seguro" },
+            { icon: BadgeCheck, t: "Fórmula Estudada" },
           ].map(({ icon: Icon, t }) => (
             <div key={t} className="flex flex-col items-center gap-2">
               <Icon className="w-7 h-7 text-orange-500" />
@@ -138,10 +136,10 @@ function Index() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
             <span className="inline-flex items-center gap-2 text-red-400 text-sm font-bold uppercase tracking-wider">
-              <AlertTriangle className="w-4 h-4" /> Você se reconhece nessas cenas?
+              <AlertTriangle className="w-4 h-4" /> Você vive isso todos os dias?
             </span>
             <h2 className="mt-4 text-3xl md:text-5xl font-black uppercase">
-              A dor está roubando <span className="text-gradient-orange">os melhores anos</span> da sua vida.
+              O açúcar descontrolado está <span className="text-gradient-orange">acelerando seu envelhecimento</span> — em silêncio.
             </h2>
           </div>
 
@@ -149,38 +147,38 @@ function Index() {
             <div className="space-y-4">
               <img
                 src={dorJoelho}
-                alt="Idoso sentindo dor no joelho ao acordar"
+                alt="Pessoa cansada, sem energia ao acordar"
                 loading="lazy"
                 width={1024}
                 height={1024}
                 className="w-full rounded-3xl border border-white/10 shadow-2xl"
               />
               <p className="text-lg text-white/80 leading-relaxed">
-                <strong className="text-white">Você acorda travado.</strong> Precisa se apoiar pra sentar, pra levantar, pra dar o primeiro passo do dia.
-                E o pior: já se acostumou a começar a manhã pedindo socorro pro próprio corpo.
+                <strong className="text-white">Você acorda pesado, sem energia.</strong> A gordura na barriga não vai embora nem com dieta.
+                À tarde bate aquela sonolência, e a vontade de doce parece mais forte que sua força de vontade.
               </p>
             </div>
 
             <div className="space-y-4">
               <img
                 src={dorColuna}
-                alt="Idosa com dor nas costas e ombro"
+                alt="Pessoa preocupada com saúde e exames"
                 loading="lazy"
                 width={1024}
                 height={1024}
                 className="w-full rounded-3xl border border-white/10 shadow-2xl"
               />
               <p className="text-lg text-white/80 leading-relaxed">
-                <strong className="text-white">Você inventa desculpas pra não sair.</strong> Recusa convites, evita escadas, larga atividades que amava.
-                A dor virou uma prisão silenciosa — e ninguém ao seu redor entende o tamanho do que você sente.
+                <strong className="text-white">Os exames vêm preocupando.</strong> Glicose subindo, colesterol alterado, pressão instável.
+                O médico já avisou que se nada mudar, o próximo passo é começar uma medicação forte — pra vida toda.
               </p>
             </div>
           </div>
 
           <div className="mt-14 max-w-3xl mx-auto bg-card border-l-4 border-orange-500 rounded-2xl p-6 md:p-8">
             <p className="text-xl md:text-2xl text-white font-bold leading-snug">
-              O verdadeiro problema <span className="text-gradient-orange">não é a idade</span>.
-              É a <span className="text-gradient-orange">inflamação crônica</span> destruindo suas articulações por dentro — e ninguém te contou isso até hoje.
+              O problema <span className="text-gradient-orange">não é falta de esforço</span>.
+              É a <span className="text-gradient-orange">resistência à insulina</span> sabotando seu corpo silenciosamente — e isso tem solução natural.
             </p>
           </div>
         </div>
@@ -191,7 +189,7 @@ function Index() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <img
             src={casalFeliz}
-            alt="Casal de idosos felizes caminhando livres da dor"
+            alt="Casal feliz e saudável após usar Berberine Patch"
             loading="lazy"
             width={1024}
             height={1024}
@@ -199,23 +197,24 @@ function Index() {
           />
           <div>
             <span className="inline-flex items-center gap-2 text-orange-400 text-sm font-bold uppercase tracking-wider">
-              <Heart className="w-4 h-4" /> Imagine a sua vida assim
+              <Heart className="w-4 h-4" /> A solução chegou — e cabe num adesivo
             </span>
             <h2 className="mt-4 text-3xl md:text-5xl font-black uppercase">
-              Sua liberdade <span className="text-gradient-orange">está de volta.</span>
+              Conheça o <span className="text-gradient-orange">Berberine Patch.</span>
             </h2>
             <p className="mt-6 text-lg text-white/80">
-              Foi pra acabar com esse sofrimento silencioso que nasceu o <strong className="text-white">100DORES Plus</strong> —
-              uma fórmula natural que ataca a inflamação na origem e devolve mobilidade real, todos os dias.
+              É um adesivo discreto que entrega <strong className="text-white">Berberina pura</strong> diretamente pela pele —
+              o composto natural que cientistas já compararam à eficácia da Metformina nos estudos clínicos.
+              Sem comprimidos, sem enjoo, sem esforço.
             </p>
 
             <ul className="mt-6 space-y-3 text-lg">
               {[
-                "Acordar disposto, sem dor, sem rigidez.",
-                "Caminhar quilômetros sem se arrepender depois.",
-                "Subir escadas sem precisar segurar no corrimão.",
-                "Brincar com seus netos até eles cansarem — não você.",
-                "Voltar a dormir a noite inteira em paz.",
+                "Açúcar no sangue mais estável o dia inteiro.",
+                "Menos vontade de doce e de beliscar fora de hora.",
+                "Gordura abdominal cedendo semana após semana.",
+                "Energia constante, sem aquela queda da tarde.",
+                "Roupas voltando a servir — sem dieta torturante.",
               ].map((t) => (
                 <li key={t} className="flex gap-3 items-start">
                   <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-0.5" />
@@ -224,7 +223,9 @@ function Index() {
               ))}
             </ul>
 
-            <a href="#ofertas" className="btn-orange mt-8 text-base">Quero recuperar minha vida</a>
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer sponsored" className="btn-orange mt-8 text-base inline-flex items-center gap-2">
+              Ver oferta na página oficial <ArrowRight className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </section>
@@ -234,10 +235,10 @@ function Index() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-black uppercase">
-              O poder de <span className="text-gradient-orange">17 ativos naturais</span>
+              Por que o <span className="text-gradient-orange">Berberine Patch</span> funciona
             </h2>
             <p className="mt-4 text-lg text-white/70">
-              Cada cápsula trata a inflamação onde ela nasce — não esconde o sintoma.
+              Liberação contínua de berberina pela pele — sem perder potência no estômago.
             </p>
           </div>
 
@@ -265,7 +266,7 @@ function Index() {
       <section className="px-4 py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center text-3xl md:text-5xl font-black uppercase">
-            Quem provou, <span className="text-gradient-orange">voltou a viver</span>
+            Quem usou, <span className="text-gradient-orange">virou fã</span>
           </h2>
           <div className="mt-12 grid md:grid-cols-3 gap-5">
             {testimonials.map((t) => (
@@ -281,52 +282,48 @@ function Index() {
         </div>
       </section>
 
-      {/* Offers */}
+      {/* Pré-venda — direciona pro produtor */}
       <section id="ofertas" className="px-4 py-20 bg-gradient-to-b from-zinc-950 to-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-black uppercase">Escolha seu tratamento</h2>
-            <p className="mt-4 text-lg text-white/70">
-              Especialistas recomendam <strong className="text-orange-400">no mínimo 3 meses</strong> de uso contínuo
-              para resultados duradouros.
-            </p>
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-2 rounded-full text-xs font-bold text-orange-400 uppercase tracking-wider">
+            <BadgeCheck className="w-4 h-4" /> Compra exclusiva no site oficial
+          </span>
+          <h2 className="mt-6 text-3xl md:text-5xl font-black uppercase">
+            Garanta seu <span className="text-gradient-orange">Berberine Patch</span> direto com o produtor
+          </h2>
+          <p className="mt-5 text-lg text-white/75">
+            Para proteger você de cópias e garantir o preço promocional, a venda é feita
+            <strong className="text-white"> apenas na página oficial do fabricante</strong>.
+            Lá você encontra os kits com desconto, o checkout seguro e a garantia de 60 dias.
+          </p>
+
+          <div className="mt-10 bg-card border border-orange-500/30 rounded-3xl p-8 text-left">
+            <h3 className="text-xl text-white">O que você verá na próxima página:</h3>
+            <ul className="mt-4 space-y-3">
+              {[
+                "Os kits oficiais com até 60% de desconto",
+                "Frete promocional e bônus exclusivos",
+                "Garantia incondicional de 60 dias",
+                "Checkout 100% seguro (ClickBank)",
+              ].map((t) => (
+                <li key={t} className="flex gap-3 items-start">
+                  <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-0.5" />
+                  <span className="text-white/90">{t}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-3 gap-6">
-            {offers.map((o) => (
-              <div
-                key={o.qty}
-                className={`relative bg-card rounded-3xl p-8 flex flex-col border transition ${
-                  o.highlight ? "border-orange-500 scale-100 md:scale-105 shadow-[0_0_60px_-10px_rgba(255,90,30,0.5)]" : "border-white/10"
-                }`}
-              >
-                {o.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-600 to-orange-500 text-white text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider">
-                    Mais Vendido
-                  </span>
-                )}
-                <h3 className="text-2xl text-white">{o.label}</h3>
-                <p className="text-sm text-white/60 mt-1">{o.sub}</p>
-                <div className="my-6">
-                  <div className="text-sm text-white/50 line-through">De {o.de}</div>
-                  <div className="text-5xl font-black text-gradient-orange leading-none mt-1">{o.price}</div>
-                  <div className="text-sm text-white/60 mt-2">{o.perUnit}</div>
-                  <div className="inline-block mt-3 text-xs font-bold text-orange-300 bg-orange-500/10 border border-orange-500/30 rounded-full px-3 py-1">
-                    {o.econ}
-                  </div>
-                </div>
-                <ul className="space-y-2 text-sm mb-6 text-white/80">
-                  <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Frete grátis Brasil</li>
-                  <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Garantia 30 dias</li>
-                  <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-orange-500 shrink-0"/> Envio em 24h</li>
-                </ul>
-                <a href="#" className="btn-orange mt-auto w-full">{o.cta}</a>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center mt-8 text-sm text-white/60 flex items-center justify-center gap-2">
-            <Lock className="w-4 h-4" /> Pagamento 100% seguro • Pix, Cartão (até 12x) ou Boleto
+          <a
+            href={OFFICIAL_URL}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className="btn-orange mt-10 text-base md:text-lg inline-flex items-center gap-2"
+          >
+            Ir para a página oficial <ArrowRight className="w-5 h-5" />
+          </a>
+          <p className="mt-4 text-sm text-white/60 flex items-center justify-center gap-2">
+            <Lock className="w-4 h-4" /> Você será redirecionado ao site oficial do fabricante
           </p>
         </div>
       </section>
@@ -338,11 +335,11 @@ function Index() {
             style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-orange)" }}>
             <ShieldCheck className="w-10 h-10 text-white"/>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black uppercase">Garantia incondicional de 30 dias</h2>
+          <h2 className="text-3xl md:text-4xl font-black uppercase">Garantia incondicional de 60 dias</h2>
           <p className="mt-4 text-lg text-white/75">
-            Teste o 100DORES Plus por 30 dias inteiros. Se você não sentir uma diferença
-            <strong className="text-orange-400"> real e perceptível</strong> nas suas dores,
-            devolvemos <strong className="text-orange-400">100% do seu dinheiro</strong>. Sem perguntas. O risco é todo nosso.
+            Teste o Berberine Patch por 60 dias inteiros pela página oficial. Se você não sentir
+            <strong className="text-orange-400"> diferença real</strong> na sua energia, peso e disposição,
+            o produtor devolve <strong className="text-orange-400">100% do seu dinheiro</strong>. Sem perguntas. O risco é todo dele.
           </p>
         </div>
       </section>
@@ -351,14 +348,22 @@ function Index() {
       <section className="px-4 py-20 bg-infinite">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-black uppercase">
-            Sua vida sem dor <span className="text-gradient-orange">começa hoje</span>.
+            Sua nova versão <span className="text-gradient-orange">começa agora</span>.
           </h2>
           <p className="mt-5 text-lg text-white/80">
-            Cada dia que passa é mais um dia perdido em sofrimento. Você já esperou demais.
+            Cada dia adiando é mais um dia perdendo energia, saúde e tempo com sua família.
+            O próximo passo está a um clique de distância — na página oficial do produtor.
           </p>
-          <p className="mt-8 text-2xl">👇👇👇</p>
-          <a href="#ofertas" className="btn-orange mt-6 text-base md:text-lg">
-            Quero experimentar o 100DORES Plus agora
+          <div className="mt-10 flex justify-center">
+            <ArrowRight className="w-10 h-10 text-orange-500 animate-bounce -rotate-90" />
+          </div>
+          <a
+            href={OFFICIAL_URL}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className="btn-orange mt-6 text-base md:text-lg inline-flex items-center gap-2"
+          >
+            Quero conhecer o Berberine Patch <ArrowRight className="w-5 h-5" />
           </a>
         </div>
       </section>
