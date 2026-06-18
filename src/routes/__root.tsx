@@ -87,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Lovable App" },
       { name: "twitter:description", content: "Vitality Renew offers a natural supplement for adults aged 44-60 experiencing joint pain and discomfort." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4bf87f21-8c78-45d7-9abb-b0a6cf8a7ddd/id-preview-ee6635f7--7c18d267-25b8-40dc-942e-c8d36fa8ea8d.lovable.app-1781492974083.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4bf87f21-8c78-45d7-9abb-b0a6cf8a7ddd/id-preview-ee6635f7--7c18d267-25b8-40dc-942e-c8d36fa8ea8d.lovable.app-1781492974083.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5NmuztZ7BtgXXs2pbvTf30blCOf1/social-images/social-1781756918010-1000421537.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5NmuztZ7BtgXXs2pbvTf30blCOf1/social-images/social-1781756918010-1000421537.webp" },
     ],
     links: [
       {
