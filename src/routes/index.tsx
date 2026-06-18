@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import produto from "@/assets/produto-real.png";
-import dorJoelho from "@/assets/dor-joelho.jpg";
-import dorColuna from "@/assets/dor-coluna.jpg";
-import casalFeliz from "@/assets/casal-feliz.jpg";
-import heroVideo from "@/assets/berberine-hero.mp4.asset.json";
+import heroEn from "@/assets/hero-en.png.asset.json";
+import heroPt from "@/assets/hero-pt.png.asset.json";
+import baSarah from "@/assets/before-after-sarah.jpg";
+import baLinda from "@/assets/before-after-linda.jpg";
+import baJessica from "@/assets/before-after-jessica.jpg";
 import {
   ShieldCheck,
   Flame,
-  Bone,
   Sparkles,
   Activity,
   Leaf,
@@ -21,6 +22,8 @@ import {
   Heart,
   ArrowRight,
   Eye,
+  Globe,
+  Zap,
 } from "lucide-react";
 
 const OFFICIAL_URL =
@@ -47,71 +50,303 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const benefits = [
-  { icon: Activity, title: "Balances Blood Sugar", text: "Berberine has been studied for years for its direct effect on glucose metabolism." },
-  { icon: Flame, title: "Burns Stubborn Fat", text: "Helps your body use fat as fuel — especially around the belly and hips." },
-  { icon: Sparkles, title: "Transdermal Technology", text: "Released slowly through the skin — no stomach upset, no pills to swallow." },
-  { icon: Bone, title: "All-Day Energy", text: "No sugar crashes. Wake up light, stay sharp until bedtime." },
-  { icon: Leaf, title: "Discreet & 100% Natural", text: "Thin, odorless, invisible under any outfit. Wear it and forget it." },
-  { icon: ShieldCheck, title: "No Pills, No Crazy Diets", text: "Works quietly in the background while you live your normal life." },
-];
+type Lang = "en" | "pt";
 
-const testimonials = [
-  { name: "Sarah M., 47", text: "Within a few weeks my fasting glucose dropped so much my doctor literally asked what I was doing differently. I feel like ME again." },
-  { name: "Linda K., 52", text: "I lived tired, with that stubborn belly that wouldn't go away. After one month with the patch, my clothes started fitting again. No crazy diet." },
-  { name: "Jessica T., 44", text: "The late-afternoon sugar cravings? Gone. Sounds small but it changed my entire routine — and my body." },
-];
+const COPY = {
+  en: {
+    topBar: "🔥 OFFICIAL LIMITED-TIME OFFER • LOW STOCK • FREE U.S. SHIPPING",
+    heroTag: "Berberine • Transdermal Technology",
+    heroTitle1: "Become the woman",
+    heroTitle2: "he can't stop",
+    heroTitle3: "looking at.",
+    heroSub:
+      "Thousands of women over 40 traded harsh pills and impossible diets for the",
+    heroSubStrong: " Berberine Patch ",
+    heroSubEnd:
+      "— a discreet adhesive that works 24/7 through transdermal technology.",
+    heroSubEm: "See why it became a phenomenon in the U.S.",
+    ctaHero: "Visit official site",
+    rating: "4.9/5 • thousands of happy women",
+    trust: [
+      { t: "Free U.S. Shipping" },
+      { t: "30-Day Guarantee" },
+      { t: "Secure Checkout" },
+      { t: "Studied Formula" },
+    ],
+    storyEyebrow: "A moment every woman knows",
+    storyTitle1: "Imagine yourself, all dressed up, at a",
+    storyTitle2: "special restaurant",
+    storyTitle3: "with your husband.",
+    storyLines: [
+      "The perfect night.",
+      "Until a stunning woman walks past your table.",
+      "And he can't stop looking.",
+    ],
+    storyHurt: "It hurts, doesn't it?",
+    storyNow1: "Now imagine that woman",
+    storyNowEm: "is you",
+    storyNow2: "— with Berberine Patch.",
+    guaranteeBox:
+      "Try it for 30 full days. If you're not surprised by what you see in the mirror, we refund 100% of your money. The risk is entirely on us.",
+    guaranteeDays: "30 full days",
+    guaranteeMoney: "100% of your money",
+    ctaStory: "I want to be that woman",
+    problemEyebrow: "Does this sound like you?",
+    problemTitle1: "Unbalanced blood sugar is",
+    problemTitleEm: "aging you faster",
+    problemTitle2: "— silently.",
+    baEyebrow: "Real before & after",
+    baTitle1: "What",
+    baTitleEm: "30 days",
+    baTitle2: "with the patch can do",
+    baSub:
+      "Real women, real transformations. Each one wore the Berberine Patch daily — no diet shocks, no gym torture.",
+    baCards: [
+      { img: baSarah, name: "Sarah, 47", text: "Lost 14 lbs and got her confidence back." },
+      { img: baLinda, name: "Linda, 52", text: "Flat belly for the first time in 10 years." },
+      { img: baJessica, name: "Jessica, 44", text: "More energy than her own daughter." },
+    ],
+    solEyebrow: "The solution fits in a single patch",
+    solTitle1: "Meet the",
+    solTitleEm: "Berberine Patch.",
+    solDesc:
+      "A discreet adhesive that delivers pure Berberine straight through your skin — the natural compound scientists have compared to Metformin in clinical studies. No pills. No nausea. No effort.",
+    solBullets: [
+      "Stable blood sugar throughout the day.",
+      "Fewer sweet cravings and late-night snacking.",
+      "Belly fat melting away week after week.",
+      "Steady energy — no afternoon crash.",
+      "Your favorite clothes fitting again — without torture diets.",
+    ],
+    ctaSol: "See the offer on the official site",
+    benefitsTitle1: "Why",
+    benefitsTitleEm: "Berberine Patch",
+    benefitsTitle2: "works",
+    benefitsSub:
+      "Continuous berberine release through the skin — no potency lost in your stomach.",
+    benefits: [
+      { icon: Activity, title: "Balances Blood Sugar", text: "Berberine has been studied for years for its direct effect on glucose metabolism." },
+      { icon: Flame, title: "Burns Stubborn Fat", text: "Helps your body use fat as fuel — especially around the belly and hips." },
+      { icon: Sparkles, title: "Transdermal Technology", text: "Released slowly through the skin — no stomach upset, no pills to swallow." },
+      { icon: Zap, title: "All-Day Energy", text: "No sugar crashes. Wake up light, stay sharp until bedtime." },
+      { icon: Leaf, title: "Discreet & 100% Natural", text: "Thin, odorless, invisible under any outfit. Wear it and forget it." },
+      { icon: ShieldCheck, title: "No Pills, No Crazy Diets", text: "Works quietly in the background while you live your normal life." },
+    ],
+    testimonialsTitle1: "Real women,",
+    testimonialsTitleEm: "real results",
+    testimonials: [
+      { name: "Sarah M., 47", text: "Within a few weeks my fasting glucose dropped so much my doctor literally asked what I was doing differently. I feel like ME again." },
+      { name: "Linda K., 52", text: "I lived tired, with that stubborn belly that wouldn't go away. After one month with the patch, my clothes started fitting again. No crazy diet." },
+      { name: "Jessica T., 44", text: "The late-afternoon sugar cravings? Gone. Sounds small but it changed my entire routine — and my body." },
+    ],
+    preBadge: "Available only on the official site",
+    preTitle1: "Get your",
+    preTitleEm: "Berberine Patch",
+    preTitle2: "direct from the maker",
+    preSub:
+      "To protect you from counterfeits and guarantee the promo pricing, Berberine Patch is sold only on the official manufacturer page. That's where the discounted kits, secure checkout and 30-day guarantee live.",
+    preList: [
+      "Official kits with up to 60% off",
+      "Free shipping and exclusive bonuses",
+      "Unconditional 30-day money-back guarantee",
+      "100% secure checkout (ClickBank)",
+    ],
+    preWhat: "What you'll see on the next page:",
+    ctaPre: "Go to the official site",
+    redirect: "You'll be redirected to the official manufacturer page",
+    guaranteeTitle: "30-Day Money-Back Guarantee",
+    guaranteeBody:
+      "Try Berberine Patch for 30 full days through the official site. If you're not genuinely surprised by the change in your body, energy and confidence, the maker refunds 100% of your money. No questions asked. The risk is entirely on us.",
+    finalTitle1: "Your new version",
+    finalTitleEm: "starts today.",
+    finalSub:
+      "Every day you wait is another day losing energy, confidence and time with the people you love. The next step is one click away — on the official manufacturer page.",
+    ctaFinal: "Try Berberine Patch now",
+    footer: "Dietary supplement. Does not replace a balanced diet.",
+  },
+  pt: {
+    topBar: "🔥 OFERTA OFICIAL POR TEMPO LIMITADO • ESTOQUE BAIXO • FRETE GRÁTIS",
+    heroTag: "Berberina • Tecnologia Transdérmica",
+    heroTitle1: "Seja a mulher",
+    heroTitle2: "que ele não",
+    heroTitle3: "consegue parar de olhar.",
+    heroSub:
+      "Milhares de mulheres acima dos 40 trocaram remédios pesados e dietas impossíveis pelo",
+    heroSubStrong: " Berberine Patch ",
+    heroSubEnd:
+      "— um adesivo discreto que age 24h por dia através da tecnologia transdérmica.",
+    heroSubEm: "Veja por que virou febre nos Estados Unidos.",
+    ctaHero: "Acessar site oficial",
+    rating: "4.9/5 • milhares de mulheres satisfeitas",
+    trust: [
+      { t: "Frete Grátis" },
+      { t: "Garantia de 30 dias" },
+      { t: "Compra Segura" },
+      { t: "Fórmula Estudada" },
+    ],
+    storyEyebrow: "Um momento que toda mulher conhece",
+    storyTitle1: "Imagine você, toda arrumada, num",
+    storyTitle2: "restaurante especial",
+    storyTitle3: "com seu marido.",
+    storyLines: [
+      "A noite perfeita.",
+      "Até que uma mulher linda passa pela sua mesa.",
+      "E ele não consegue parar de olhar.",
+    ],
+    storyHurt: "Dói, não dói?",
+    storyNow1: "Agora imagine que essa mulher",
+    storyNowEm: "é você",
+    storyNow2: "— com o Berberine Patch.",
+    guaranteeBox:
+      "Teste por 30 dias completos. Se você não se surpreender com o que vê no espelho, devolvemos 100% do seu dinheiro. O risco é todo nosso.",
+    guaranteeDays: "30 dias completos",
+    guaranteeMoney: "100% do seu dinheiro",
+    ctaStory: "Quero ser essa mulher",
+    problemEyebrow: "Isso se parece com você?",
+    problemTitle1: "Açúcar no sangue desregulado está",
+    problemTitleEm: "te envelhecendo mais rápido",
+    problemTitle2: "— em silêncio.",
+    baEyebrow: "Antes & depois reais",
+    baTitle1: "O que",
+    baTitleEm: "30 dias",
+    baTitle2: "com o adesivo podem fazer",
+    baSub:
+      "Mulheres reais, transformações reais. Cada uma usou o Berberine Patch diariamente — sem dietas radicais, sem tortura na academia.",
+    baCards: [
+      { img: baSarah, name: "Sarah, 47", text: "Perdeu 6 kg e recuperou a confiança." },
+      { img: baLinda, name: "Linda, 52", text: "Barriga lisa pela primeira vez em 10 anos." },
+      { img: baJessica, name: "Jessica, 44", text: "Mais energia que a própria filha." },
+    ],
+    solEyebrow: "A solução cabe num único adesivo",
+    solTitle1: "Conheça o",
+    solTitleEm: "Berberine Patch.",
+    solDesc:
+      "Um adesivo discreto que libera Berberina pura direto pela sua pele — o composto natural que cientistas compararam à Metformina em estudos clínicos. Sem comprimidos. Sem náuseas. Sem esforço.",
+    solBullets: [
+      "Açúcar no sangue estável o dia inteiro.",
+      "Menos vontade de doce e beliscos à noite.",
+      "Gordura da barriga derretendo semana após semana.",
+      "Energia constante — sem queda à tarde.",
+      "Suas roupas favoritas servindo de novo — sem dietas de tortura.",
+    ],
+    ctaSol: "Ver oferta no site oficial",
+    benefitsTitle1: "Por que o",
+    benefitsTitleEm: "Berberine Patch",
+    benefitsTitle2: "funciona",
+    benefitsSub:
+      "Liberação contínua de berberina pela pele — sem perder potência no estômago.",
+    benefits: [
+      { icon: Activity, title: "Equilibra a Glicose", text: "A berberina é estudada há anos pelo seu efeito direto no metabolismo da glicose." },
+      { icon: Flame, title: "Queima Gordura Teimosa", text: "Ajuda o corpo a usar gordura como combustível — principalmente barriga e quadril." },
+      { icon: Sparkles, title: "Tecnologia Transdérmica", text: "Liberação lenta pela pele — sem irritar o estômago, sem comprimido." },
+      { icon: Zap, title: "Energia o Dia Todo", text: "Sem picos de açúcar. Acorde leve e se mantenha disposta até a noite." },
+      { icon: Leaf, title: "Discreto & 100% Natural", text: "Fino, sem cheiro, invisível embaixo de qualquer roupa. Cole e esqueça." },
+      { icon: ShieldCheck, title: "Sem Comprimidos, Sem Dietas Loucas", text: "Age em silêncio enquanto você vive sua vida normal." },
+    ],
+    testimonialsTitle1: "Mulheres reais,",
+    testimonialsTitleEm: "resultados reais",
+    testimonials: [
+      { name: "Sarah M., 47", text: "Em poucas semanas minha glicose em jejum caiu tanto que meu médico perguntou o que eu estava fazendo de diferente. Voltei a me sentir EU." },
+      { name: "Linda K., 52", text: "Vivia cansada, com aquela barriga teimosa que não saía. Depois de um mês com o adesivo, minhas roupas voltaram a servir. Sem dieta louca." },
+      { name: "Jessica T., 44", text: "A vontade de doce no fim da tarde? Sumiu. Parece pouco, mas mudou toda a minha rotina — e meu corpo." },
+    ],
+    preBadge: "Disponível somente no site oficial",
+    preTitle1: "Receba seu",
+    preTitleEm: "Berberine Patch",
+    preTitle2: "direto do fabricante",
+    preSub:
+      "Para te proteger de falsificações e garantir o preço promocional, o Berberine Patch é vendido somente na página oficial do fabricante. É lá que estão os kits com desconto, o checkout seguro e a garantia de 30 dias.",
+    preList: [
+      "Kits oficiais com até 60% de desconto",
+      "Frete grátis e bônus exclusivos",
+      "Garantia incondicional de 30 dias",
+      "Checkout 100% seguro (ClickBank)",
+    ],
+    preWhat: "O que você vai ver na próxima página:",
+    ctaPre: "Ir para o site oficial",
+    redirect: "Você será redirecionada para a página oficial do fabricante",
+    guaranteeTitle: "Garantia de 30 Dias",
+    guaranteeBody:
+      "Teste o Berberine Patch por 30 dias completos pelo site oficial. Se você não ficar genuinamente surpresa com a mudança no seu corpo, energia e confiança, o fabricante devolve 100% do seu dinheiro. Sem perguntas. O risco é todo nosso.",
+    finalTitle1: "Sua nova versão",
+    finalTitleEm: "começa hoje.",
+    finalSub:
+      "Cada dia que passa é mais um dia perdendo energia, confiança e tempo com as pessoas que você ama. O próximo passo está a um clique — na página oficial do fabricante.",
+    ctaFinal: "Quero o Berberine Patch agora",
+    footer: "Suplemento alimentar. Não substitui uma alimentação equilibrada.",
+  },
+} as const;
 
 function Index() {
+  const [lang, setLang] = useState<Lang>("en");
+  const t = COPY[lang];
+  const heroImg = lang === "en" ? heroEn.url : heroPt.url;
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
       <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-white text-center text-sm py-2 px-4 font-bold tracking-wide">
-        🔥 OFFICIAL LIMITED-TIME OFFER • LOW STOCK • FREE U.S. SHIPPING
+        {t.topBar}
+      </div>
+
+      {/* Language switch */}
+      <div className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-4 py-2 flex justify-end">
+          <div className="inline-flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1">
+            <Globe className="w-4 h-4 text-white/60 ml-2" />
+            <button
+              onClick={() => setLang("en")}
+              className={`text-xs font-bold px-3 py-1 rounded-full transition ${lang === "en" ? "bg-orange-500 text-white" : "text-white/70 hover:text-white"}`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLang("pt")}
+              className={`text-xs font-bold px-3 py-1 rounded-full transition ${lang === "pt" ? "bg-orange-500 text-white" : "text-white/70 hover:text-white"}`}
+            >
+              PT
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* HERO */}
-      <section className="bg-infinite px-4 pt-12 pb-16 md:pt-20 md:pb-24">
+      <section className="bg-infinite px-4 pt-10 pb-16 md:pt-16 md:pb-24">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="inline-flex items-center gap-2 bg-white/5 border border-orange-500/30 backdrop-blur px-4 py-2 rounded-full text-xs font-bold text-orange-400 uppercase tracking-wider">
-              <Leaf className="w-4 h-4" /> Berberine • Transdermal Technology
+              <Leaf className="w-4 h-4" /> {t.heroTag}
             </span>
             <h1 className="mt-6 text-4xl md:text-6xl leading-[1.05] font-black uppercase">
-              Become the woman <span className="text-gradient-orange">he can't stop</span> looking at.
+              {t.heroTitle1} <span className="text-gradient-orange">{t.heroTitle2}</span> {t.heroTitle3}
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/80">
-              Thousands of women over 40 traded harsh pills and impossible diets for the
-              <strong className="text-white"> Berberine Patch</strong> — a discreet adhesive that works 24/7
-              through transdermal technology. <strong className="text-orange-400">See why it became a phenomenon in the U.S.</strong>
+              {t.heroSub}<strong className="text-white">{t.heroSubStrong}</strong>{t.heroSubEnd}{" "}
+              <strong className="text-orange-400">{t.heroSubEm}</strong>
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer sponsored" className="btn-orange text-base md:text-lg inline-flex items-center gap-2">
-                Visit official site <ArrowRight className="w-5 h-5" />
+                {t.ctaHero} <ArrowRight className="w-5 h-5" />
               </a>
               <div className="flex items-center gap-2 text-sm text-white/70">
                 <div className="flex gap-0.5 text-orange-400">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-orange-400" />)}
                 </div>
-                4.9/5 • thousands of happy women
+                {t.rating}
               </div>
             </div>
           </div>
 
-          <div className="product-3d">
-            <div className="product-glow" />
-            <div className="product-3d-inner relative z-10">
-              <video
-                src={heroVideo.url}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
-              />
-            </div>
+          <div className="relative">
+            <div className="absolute -inset-6 bg-orange-500/20 blur-3xl rounded-3xl" />
+            <img
+              src={heroImg}
+              alt={lang === "en" ? "Tired of being overlooked? Berberine Patch" : "Cansada de ser ignorada? Berberine Patch"}
+              width={1200}
+              height={950}
+              className="relative w-full rounded-3xl shadow-2xl border border-orange-500/20"
+            />
           </div>
         </div>
 
@@ -124,45 +359,42 @@ function Index() {
       <section className="border-y border-white/10 bg-black">
         <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm">
           {[
-            { icon: Truck, t: "Free U.S. Shipping" },
-            { icon: ShieldCheck, t: "30-Day Guarantee" },
-            { icon: Lock, t: "Secure Checkout" },
-            { icon: BadgeCheck, t: "Studied Formula" },
-          ].map(({ icon: Icon, t }) => (
-            <div key={t} className="flex flex-col items-center gap-2">
+            { icon: Truck, t: t.trust[0].t },
+            { icon: ShieldCheck, t: t.trust[1].t },
+            { icon: Lock, t: t.trust[2].t },
+            { icon: BadgeCheck, t: t.trust[3].t },
+          ].map(({ icon: Icon, t: label }) => (
+            <div key={label} className="flex flex-col items-center gap-2">
               <Icon className="w-7 h-7 text-orange-500" />
-              <span className="font-bold text-white/90">{t}</span>
+              <span className="font-bold text-white/90">{label}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* STORY — restaurant scene */}
+      {/* STORY */}
       <section className="px-4 py-20 bg-gradient-to-b from-black via-zinc-950 to-black">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-flex items-center gap-2 text-red-400 text-sm font-bold uppercase tracking-wider">
-            <Eye className="w-4 h-4" /> A moment every woman knows
+            <Eye className="w-4 h-4" /> {t.storyEyebrow}
           </span>
           <h2 className="mt-4 text-3xl md:text-5xl font-black uppercase leading-tight">
-            Imagine yourself, all dressed up, at a <span className="text-gradient-orange">special restaurant</span> with your husband.
+            {t.storyTitle1} <span className="text-gradient-orange">{t.storyTitle2}</span> {t.storyTitle3}
           </h2>
           <div className="mt-10 space-y-6 text-xl md:text-2xl text-white/85 leading-relaxed font-medium">
-            <p>The perfect night.</p>
-            <p>Until a stunning woman walks past your table.</p>
-            <p className="text-white">And he can't stop looking.</p>
-            <p className="text-orange-400 font-bold">It hurts, doesn't it?</p>
+            {t.storyLines.map((line, i) => (
+              <p key={i} className={i === 2 ? "text-white" : ""}>{line}</p>
+            ))}
+            <p className="text-orange-400 font-bold">{t.storyHurt}</p>
             <p className="pt-4 text-2xl md:text-3xl text-white font-black">
-              Now imagine that woman <span className="text-gradient-orange">is you</span> — with Berberine Patch.
+              {t.storyNow1} <span className="text-gradient-orange">{t.storyNowEm}</span> {t.storyNow2}
             </p>
           </div>
 
           <div className="mt-12 inline-block bg-card border border-orange-500/40 rounded-3xl px-6 py-5 text-left max-w-xl">
             <div className="flex items-start gap-3">
               <ShieldCheck className="w-7 h-7 text-orange-500 shrink-0 mt-1" />
-              <p className="text-white/90">
-                Try it for <strong className="text-orange-400">30 full days</strong>. If you're not surprised by what you see in the mirror, we refund
-                <strong className="text-orange-400"> 100% of your money</strong>. The risk is entirely on us.
-              </p>
+              <p className="text-white/90">{t.guaranteeBox}</p>
             </div>
           </div>
 
@@ -173,108 +405,77 @@ function Index() {
               rel="noopener noreferrer sponsored"
               className="btn-orange text-base md:text-lg inline-flex items-center gap-2"
             >
-              I want to be that woman <ArrowRight className="w-5 h-5" />
+              {t.ctaStory} <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
       </section>
 
-      {/* Problema com imagens reais */}
-      <section className="px-4 py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-flex items-center gap-2 text-red-400 text-sm font-bold uppercase tracking-wider">
-              <AlertTriangle className="w-4 h-4" /> Does this sound like you?
-            </span>
-            <h2 className="mt-4 text-3xl md:text-5xl font-black uppercase">
-              Unbalanced blood sugar is <span className="text-gradient-orange">aging you faster</span> — silently.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <img
-                src={dorJoelho}
-                alt="Tired woman waking up with no energy"
-                loading="lazy"
-                width={1024}
-                height={1024}
-                className="w-full rounded-3xl border border-white/10 shadow-2xl"
-              />
-              <p className="text-lg text-white/80 leading-relaxed">
-                <strong className="text-white">You wake up heavy and exhausted.</strong> Belly fat refuses to leave no matter what diet you try.
-                Afternoons hit with brain fog, and sugar cravings feel stronger than your willpower.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <img
-                src={dorColuna}
-                alt="Worried woman thinking about her health"
-                loading="lazy"
-                width={1024}
-                height={1024}
-                className="w-full rounded-3xl border border-white/10 shadow-2xl"
-              />
-              <p className="text-lg text-white/80 leading-relaxed">
-                <strong className="text-white">Your bloodwork is starting to worry you.</strong> Rising glucose, off-balance cholesterol, unstable pressure.
-                Your doctor already warned: if nothing changes, the next step is heavy medication — for life.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-14 max-w-3xl mx-auto bg-card border-l-4 border-orange-500 rounded-2xl p-6 md:p-8">
-            <p className="text-xl md:text-2xl text-white font-bold leading-snug">
-              The problem <span className="text-gradient-orange">isn't your effort</span>.
-              It's <span className="text-gradient-orange">insulin resistance</span> quietly sabotaging your body — and it has a natural solution.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Solução com imagem real */}
+      {/* BEFORE & AFTER */}
       <section className="px-4 py-20 bg-honeycomb">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <img
-            src={casalFeliz}
-            alt="Confident, happy woman with her husband after Berberine Patch"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="w-full rounded-3xl border border-orange-500/20 shadow-[0_30px_80px_-20px_rgba(255,90,30,0.45)]"
-          />
-          <div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto">
             <span className="inline-flex items-center gap-2 text-orange-400 text-sm font-bold uppercase tracking-wider">
-              <Heart className="w-4 h-4" /> The solution fits in a single patch
+              <Sparkles className="w-4 h-4" /> {t.baEyebrow}
             </span>
             <h2 className="mt-4 text-3xl md:text-5xl font-black uppercase">
-              Meet the <span className="text-gradient-orange">Berberine Patch.</span>
+              {t.baTitle1} <span className="text-gradient-orange">{t.baTitleEm}</span> {t.baTitle2}
             </h2>
-            <p className="mt-6 text-lg text-white/80">
-              A discreet adhesive that delivers <strong className="text-white">pure Berberine</strong> straight through your skin —
-              the natural compound scientists have compared to Metformin in clinical studies.
-              No pills. No nausea. No effort.
-            </p>
-
-            <ul className="mt-6 space-y-3 text-lg">
-              {[
-                "Stable blood sugar throughout the day.",
-                "Fewer sweet cravings and late-night snacking.",
-                "Belly fat melting away week after week.",
-                "Steady energy — no afternoon crash.",
-                "Your favorite clothes fitting again — without torture diets.",
-              ].map((t) => (
-                <li key={t} className="flex gap-3 items-start">
-                  <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-0.5" />
-                  <span className="text-white/90">{t}</span>
-                </li>
-              ))}
-            </ul>
-
-            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer sponsored" className="btn-orange mt-8 text-base inline-flex items-center gap-2">
-              See the offer on the official site <ArrowRight className="w-5 h-5" />
-            </a>
+            <p className="mt-4 text-lg text-white/75">{t.baSub}</p>
           </div>
+
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {t.baCards.map((c) => (
+              <div key={c.name} className="bg-card border border-white/10 rounded-3xl overflow-hidden hover:border-orange-500/40 transition">
+                <div className="relative">
+                  <img
+                    src={c.img}
+                    alt={`${c.name} — before and after Berberine Patch`}
+                    loading="lazy"
+                    width={1200}
+                    height={900}
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute top-3 left-3 bg-zinc-900/80 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    {lang === "en" ? "Before" : "Antes"}
+                  </div>
+                  <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    {lang === "en" ? "After" : "Depois"}
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="font-bold text-orange-400">{c.name}</p>
+                  <p className="mt-1 text-white/85">{c.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solution */}
+      <section className="px-4 py-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="inline-flex items-center gap-2 text-orange-400 text-sm font-bold uppercase tracking-wider">
+            <Heart className="w-4 h-4" /> {t.solEyebrow}
+          </span>
+          <h2 className="mt-4 text-3xl md:text-5xl font-black uppercase">
+            {t.solTitle1} <span className="text-gradient-orange">{t.solTitleEm}</span>
+          </h2>
+          <p className="mt-6 text-lg text-white/80">{t.solDesc}</p>
+
+          <ul className="mt-8 space-y-3 text-lg text-left max-w-xl mx-auto">
+            {t.solBullets.map((b) => (
+              <li key={b} className="flex gap-3 items-start">
+                <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-0.5" />
+                <span className="text-white/90">{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer sponsored" className="btn-orange mt-10 text-base inline-flex items-center gap-2">
+            {t.ctaSol} <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
       </section>
 
@@ -283,15 +484,13 @@ function Index() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-black uppercase">
-              Why <span className="text-gradient-orange">Berberine Patch</span> works
+              {t.benefitsTitle1} <span className="text-gradient-orange">{t.benefitsTitleEm}</span> {t.benefitsTitle2}
             </h2>
-            <p className="mt-4 text-lg text-white/70">
-              Continuous berberine release through the skin — no potency lost in your stomach.
-            </p>
+            <p className="mt-4 text-lg text-white/70">{t.benefitsSub}</p>
           </div>
 
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {benefits.map(({ icon: Icon, title, text }) => (
+            {t.benefits.map(({ icon: Icon, title, text }) => (
               <div
                 key={title}
                 className="bg-card border border-white/5 rounded-2xl p-6 transition hover:-translate-y-1 hover:border-orange-500/40"
@@ -314,49 +513,40 @@ function Index() {
       <section className="px-4 py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center text-3xl md:text-5xl font-black uppercase">
-            Real women, <span className="text-gradient-orange">real results</span>
+            {t.testimonialsTitle1} <span className="text-gradient-orange">{t.testimonialsTitleEm}</span>
           </h2>
           <div className="mt-12 grid md:grid-cols-3 gap-5">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-card border border-white/5 rounded-2xl p-6">
+            {t.testimonials.map((tt) => (
+              <div key={tt.name} className="bg-card border border-white/5 rounded-2xl p-6">
                 <div className="flex gap-1 text-orange-400 mb-3">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-orange-400" />)}
                 </div>
-                <p className="text-white/90">"{t.text}"</p>
-                <p className="mt-4 text-sm font-bold text-orange-400">— {t.name}</p>
+                <p className="text-white/90">"{tt.text}"</p>
+                <p className="mt-4 text-sm font-bold text-orange-400">— {tt.name}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Pré-venda — direciona pro produtor */}
+      {/* Pre-sale */}
       <section id="ofertas" className="px-4 py-20 bg-gradient-to-b from-zinc-950 to-black">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-2 rounded-full text-xs font-bold text-orange-400 uppercase tracking-wider">
-            <BadgeCheck className="w-4 h-4" /> Available only on the official site
+            <BadgeCheck className="w-4 h-4" /> {t.preBadge}
           </span>
           <h2 className="mt-6 text-3xl md:text-5xl font-black uppercase">
-            Get your <span className="text-gradient-orange">Berberine Patch</span> direct from the maker
+            {t.preTitle1} <span className="text-gradient-orange">{t.preTitleEm}</span> {t.preTitle2}
           </h2>
-          <p className="mt-5 text-lg text-white/75">
-            To protect you from counterfeits and guarantee the promo pricing, Berberine Patch is sold
-            <strong className="text-white"> only on the official manufacturer page</strong>.
-            That's where the discounted kits, secure checkout and 30-day guarantee live.
-          </p>
+          <p className="mt-5 text-lg text-white/75">{t.preSub}</p>
 
           <div className="mt-10 bg-card border border-orange-500/30 rounded-3xl p-8 text-left">
-            <h3 className="text-xl text-white">What you'll see on the next page:</h3>
+            <h3 className="text-xl text-white">{t.preWhat}</h3>
             <ul className="mt-4 space-y-3">
-              {[
-                "Official kits with up to 60% off",
-                "Free shipping and exclusive bonuses",
-                "Unconditional 30-day money-back guarantee",
-                "100% secure checkout (ClickBank)",
-              ].map((t) => (
-                <li key={t} className="flex gap-3 items-start">
+              {t.preList.map((p) => (
+                <li key={p} className="flex gap-3 items-start">
                   <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-0.5" />
-                  <span className="text-white/90">{t}</span>
+                  <span className="text-white/90">{p}</span>
                 </li>
               ))}
             </ul>
@@ -368,10 +558,10 @@ function Index() {
             rel="noopener noreferrer sponsored"
             className="btn-orange mt-10 text-base md:text-lg inline-flex items-center gap-2"
           >
-            Go to the official site <ArrowRight className="w-5 h-5" />
+            {t.ctaPre} <ArrowRight className="w-5 h-5" />
           </a>
           <p className="mt-4 text-sm text-white/60 flex items-center justify-center gap-2">
-            <Lock className="w-4 h-4" /> You'll be redirected to the official manufacturer page
+            <Lock className="w-4 h-4" /> {t.redirect}
           </p>
         </div>
       </section>
@@ -383,12 +573,8 @@ function Index() {
             style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-orange)" }}>
             <ShieldCheck className="w-10 h-10 text-white"/>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black uppercase">30-Day Money-Back Guarantee</h2>
-          <p className="mt-4 text-lg text-white/75">
-            Try Berberine Patch for 30 full days through the official site. If you're not
-            <strong className="text-orange-400"> genuinely surprised</strong> by the change in your body, energy and confidence,
-            the maker refunds <strong className="text-orange-400">100% of your money</strong>. No questions asked. The risk is entirely on us.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-black uppercase">{t.guaranteeTitle}</h2>
+          <p className="mt-4 text-lg text-white/75">{t.guaranteeBody}</p>
         </div>
       </section>
 
@@ -396,12 +582,9 @@ function Index() {
       <section className="px-4 py-20 bg-infinite">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-black uppercase">
-            Your new version <span className="text-gradient-orange">starts today</span>.
+            {t.finalTitle1} <span className="text-gradient-orange">{t.finalTitleEm}</span>
           </h2>
-          <p className="mt-5 text-lg text-white/80">
-            Every day you wait is another day losing energy, confidence and time with the people you love.
-            The next step is one click away — on the official manufacturer page.
-          </p>
+          <p className="mt-5 text-lg text-white/80">{t.finalSub}</p>
           <div className="mt-10 flex justify-center">
             <ArrowRight className="w-10 h-10 text-orange-500 animate-bounce -rotate-90" />
           </div>
@@ -411,13 +594,13 @@ function Index() {
             rel="noopener noreferrer sponsored"
             className="btn-orange mt-6 text-base md:text-lg inline-flex items-center gap-2"
           >
-            Try Berberine Patch now <ArrowRight className="w-5 h-5" />
+            {t.ctaFinal} <ArrowRight className="w-5 h-5" />
           </a>
         </div>
       </section>
 
       <footer className="px-4 py-8 text-center text-sm text-white/40 border-t border-white/5">
-        © {new Date().getFullYear()} 100DORES Plus • Suplemento alimentar. Não substitui uma alimentação equilibrada.
+        © {new Date().getFullYear()} Berberine Patch • {t.footer}
       </footer>
     </main>
   );
