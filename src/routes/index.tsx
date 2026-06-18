@@ -1,9 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import produto from "@/assets/produto-real.png";
 import dorJoelho from "@/assets/dor-joelho.jpg";
 import dorColuna from "@/assets/dor-coluna.jpg";
 import casalFeliz from "@/assets/casal-feliz.jpg";
-import heroVideo from "@/assets/berberine-hero.mp4.asset.json";
+import heroEn from "@/assets/hero-en.png.asset.json";
+import heroPt from "@/assets/hero-pt.png.asset.json";
+import baSarah from "@/assets/before-after-sarah.jpg";
+import baLinda from "@/assets/before-after-linda.jpg";
+import baJessica from "@/assets/before-after-jessica.jpg";
 import {
   ShieldCheck,
   Flame,
@@ -21,6 +26,7 @@ import {
   Heart,
   ArrowRight,
   Eye,
+  Globe,
 } from "lucide-react";
 
 const OFFICIAL_URL =
