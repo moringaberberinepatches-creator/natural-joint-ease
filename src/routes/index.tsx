@@ -39,19 +39,89 @@ const OFFICIAL_URL =
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Berberine Patch — The Natural Secret Reshaping Women Over 40" },
+      { title: "Purisaki Berberine Patch Reviews — Does It Really Work? (2026)" },
       {
         name: "description",
         content:
-          "The natural Berberine patch helping women burn stubborn belly fat, balance blood sugar and feel confident again. Try it risk-free for 30 days.",
+          "Purisaki Berberine Patch reviews: how the transdermal berberine weight-loss patch works, real before/after results, side effects, and 30-day money-back guarantee. Official site only.",
       },
-      { property: "og:title", content: "Berberine Patch — Become The Woman He Can't Stop Looking At" },
+      {
+        name: "keywords",
+        content:
+          "purisaki, purisaki patches, purisaki berberine patch, purisaki berberine patches, berberine patch, berberine patches, berberine patches reviews, berberine patch reviews, do berberine patches work, do purisaki patches work, do purisaki berberine patches work, are purisaki patches legit, is purisaki legit, is the purisaki patch a scam, berberine, berberine benefits, berberine side effects, berberine supplement, berberine weight loss, berberine for weight loss, berberine weight loss patches, can berberine be absorbed through the skin, slim patch reviews consumer reports, slim detox patches, glp 1 patches, glp-1 patch, kind patches, how to use purisaki berberine patches, what is purisaki berberine patch",
+      },
+      { name: "robots", content: "index,follow,max-image-preview:large" },
+      { property: "og:type", content: "product" },
+      { property: "og:title", content: "Purisaki Berberine Patch — Real Reviews, Real Results, 30-Day Guarantee" },
       {
         property: "og:description",
         content:
-          "Burn stubborn fat, balance blood sugar and reclaim your confidence — 30-day money-back guarantee.",
+          "Does the Purisaki Berberine Patch really work? Burn stubborn belly fat, balance blood sugar and reclaim your confidence — risk-free for 30 days.",
       },
+      { property: "og:url", content: "https://berberinepurisaki.lovable.app/" },
       { property: "og:image", content: produto },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Purisaki Berberine Patch — Real Reviews & Results" },
+      {
+        name: "twitter:description",
+        content:
+          "The transdermal berberine patch for weight management. 30-day money-back guarantee on the official site.",
+      },
+      { name: "twitter:image", content: produto },
+    ],
+    links: [{ rel: "canonical", href: "https://berberinepurisaki.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: "Purisaki Berberine Patch",
+          alternateName: ["Berberine Patch", "Purisaki Patches", "Berberine Weight Loss Patch"],
+          description:
+            "Transdermal berberine weight-management patch with pomegranate and fucoxanthin. Supports healthy blood sugar, fat burning and steady energy.",
+          brand: { "@type": "Brand", name: "Purisaki" },
+          category: "Health & Personal Care › Weight Management",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.8",
+            reviewCount: "1273",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Do Purisaki Berberine Patches work?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "The Purisaki Berberine Patch delivers berberine, pomegranate and fucoxanthin transdermally throughout the day to support blood sugar balance and weight management — many users report results within 30 days when worn daily.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Are Purisaki Berberine Patches legit?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes — Purisaki Berberine Patches are sold exclusively on the official manufacturer site with a 30-day money-back guarantee.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How do you use the Purisaki Berberine Patch?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Apply one patch per day to clean, dry skin on the lower abdomen or upper arm. Replace every 24 hours.",
+              },
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
