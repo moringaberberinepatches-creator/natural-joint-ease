@@ -503,7 +503,7 @@ function Index() {
                 className="bg-card border border-white/5 rounded-2xl p-6 transition hover:-translate-y-1 hover:border-orange-500/40"
               >
                 <div
-                  className="w-full aspect-square rounded-2xl overflow-hidden mb-4 border border-white/10"
+                  className="w-full h-40 rounded-2xl overflow-hidden mb-4 border border-white/10"
                   style={{ boxShadow: "0 8px 24px -8px rgba(255,90,30,0.35)" }}
                 >
                   <img
