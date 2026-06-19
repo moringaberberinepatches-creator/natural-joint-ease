@@ -7,6 +7,12 @@ import baSarah from "@/assets/before-after-sarah.jpg";
 import baLinda from "@/assets/before-after-linda.jpg";
 import baJessica from "@/assets/before-after-jessica.jpg";
 import guaranteeBadge from "@/assets/guarantee-badge.png";
+import benefitBloodSugar from "@/assets/benefit-blood-sugar.jpg";
+import benefitBurnFat from "@/assets/benefit-burn-fat.jpg";
+import benefitTransdermal from "@/assets/benefit-transdermal.jpg";
+import benefitEnergy from "@/assets/benefit-energy.jpg";
+import benefitNatural from "@/assets/benefit-natural.jpg";
+import benefitNoPills from "@/assets/benefit-no-pills.jpg";
 import {
   ShieldCheck,
   Flame,
@@ -126,12 +132,12 @@ const COPY = {
     benefitsSub:
       "Continuous berberine release through the skin — no potency lost in your stomach.",
     benefits: [
-      { icon: Activity, title: "Balances Blood Sugar", text: "Berberine has been studied for years for its direct effect on glucose metabolism." },
-      { icon: Flame, title: "Burns Stubborn Fat", text: "Helps your body use fat as fuel — especially around the belly and hips." },
-      { icon: Sparkles, title: "Transdermal Technology", text: "Released slowly through the skin — no stomach upset, no pills to swallow." },
-      { icon: Zap, title: "All-Day Energy", text: "No sugar crashes. Wake up light, stay sharp until bedtime." },
-      { icon: Leaf, title: "Discreet & 100% Natural", text: "Thin, odorless, invisible under any outfit. Wear it and forget it." },
-      { icon: ShieldCheck, title: "No Pills, No Crazy Diets", text: "Works quietly in the background while you live your normal life." },
+      { img: benefitBloodSugar, title: "Balances Blood Sugar", text: "Berberine has been studied for years for its direct effect on glucose metabolism." },
+      { img: benefitBurnFat, title: "Burns Stubborn Fat", text: "Helps your body use fat as fuel — especially around the belly and hips." },
+      { img: benefitTransdermal, title: "Transdermal Technology", text: "Released slowly through the skin — no stomach upset, no pills to swallow." },
+      { img: benefitEnergy, title: "All-Day Energy", text: "No sugar crashes. Wake up light, stay sharp until bedtime." },
+      { img: benefitNatural, title: "Discreet & 100% Natural", text: "Thin, odorless, invisible under any outfit. Wear it and forget it." },
+      { img: benefitNoPills, title: "No Pills, No Crazy Diets", text: "Works quietly in the background while you live your normal life." },
     ],
     testimonialsTitle1: "Real women,",
     testimonialsTitleEm: "real results",
@@ -237,12 +243,12 @@ const COPY = {
     benefitsSub:
       "Liberação contínua de berberina pela pele — sem perder potência no estômago.",
     benefits: [
-      { icon: Activity, title: "Equilibra a Glicose", text: "A berberina é estudada há anos pelo seu efeito direto no metabolismo da glicose." },
-      { icon: Flame, title: "Queima Gordura Teimosa", text: "Ajuda o corpo a usar gordura como combustível — principalmente barriga e quadril." },
-      { icon: Sparkles, title: "Tecnologia Transdérmica", text: "Liberação lenta pela pele — sem irritar o estômago, sem comprimido." },
-      { icon: Zap, title: "Energia o Dia Todo", text: "Sem picos de açúcar. Acorde leve e se mantenha disposta até a noite." },
-      { icon: Leaf, title: "Discreto & 100% Natural", text: "Fino, sem cheiro, invisível embaixo de qualquer roupa. Cole e esqueça." },
-      { icon: ShieldCheck, title: "Sem Comprimidos, Sem Dietas Loucas", text: "Age em silêncio enquanto você vive sua vida normal." },
+      { img: benefitBloodSugar, title: "Equilibra a Glicose", text: "A berberina é estudada há anos pelo seu efeito direto no metabolismo da glicose." },
+      { img: benefitBurnFat, title: "Queima Gordura Teimosa", text: "Ajuda o corpo a usar gordura como combustível — principalmente barriga e quadril." },
+      { img: benefitTransdermal, title: "Tecnologia Transdérmica", text: "Liberação lenta pela pele — sem irritar o estômago, sem comprimido." },
+      { img: benefitEnergy, title: "Energia o Dia Todo", text: "Sem picos de açúcar. Acorde leve e se mantenha disposta até a noite." },
+      { img: benefitNatural, title: "Discreto & 100% Natural", text: "Fino, sem cheiro, invisível embaixo de qualquer roupa. Cole e esqueça." },
+      { img: benefitNoPills, title: "Sem Comprimidos, Sem Dietas Loucas", text: "Age em silêncio enquanto você vive sua vida normal." },
     ],
     testimonialsTitle1: "Mulheres reais,",
     testimonialsTitleEm: "resultados reais",
@@ -491,16 +497,23 @@ function Index() {
           </div>
 
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {t.benefits.map(({ icon: Icon, title, text }) => (
+            {t.benefits.map(({ img, title, text }) => (
               <div
                 key={title}
                 className="bg-card border border-white/5 rounded-2xl p-6 transition hover:-translate-y-1 hover:border-orange-500/40"
               >
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
-                  style={{ background: "var(--gradient-primary)", boxShadow: "0 8px 24px -8px rgba(255,90,30,0.5)" }}
+                  className="w-full aspect-square rounded-2xl overflow-hidden mb-4 border border-white/10"
+                  style={{ boxShadow: "0 8px 24px -8px rgba(255,90,30,0.35)" }}
                 >
-                  <Icon className="w-7 h-7 text-white" />
+                  <img
+                    src={img}
+                    alt={title}
+                    loading="lazy"
+                    width={512}
+                    height={512}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl text-white">{title}</h3>
                 <p className="mt-2 text-white/65">{text}</p>
