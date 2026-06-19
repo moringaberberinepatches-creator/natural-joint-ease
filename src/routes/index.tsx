@@ -6,6 +6,7 @@ import heroPt from "@/assets/hero-pt.png.asset.json";
 import baSarah from "@/assets/before-after-sarah.jpg";
 import baLinda from "@/assets/before-after-linda.jpg";
 import baJessica from "@/assets/before-after-jessica.jpg";
+import guaranteeBadge from "@/assets/guarantee-badge.png";
 import {
   ShieldCheck,
   Flame,
@@ -569,10 +570,14 @@ function Index() {
       {/* Guarantee */}
       <section className="px-4 py-20">
         <div className="max-w-3xl mx-auto bg-card border border-orange-500/30 rounded-3xl p-8 md:p-12 text-center">
-          <div className="inline-flex w-20 h-20 rounded-full items-center justify-center mb-4"
-            style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-orange)" }}>
-            <ShieldCheck className="w-10 h-10 text-white"/>
-          </div>
+          <img
+            src={guaranteeBadge}
+            alt="30-Day Money Back Guarantee — Berberine Patch"
+            loading="lazy"
+            width={1024}
+            height={1024}
+            className="mx-auto w-48 md:w-56 h-auto mb-4"
+          />
           <h2 className="text-3xl md:text-4xl font-black uppercase">{t.guaranteeTitle}</h2>
           <p className="mt-4 text-lg text-white/75">{t.guaranteeBody}</p>
         </div>
