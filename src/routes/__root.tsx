@@ -89,11 +89,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Vitality Renew offers a natural supplement for adults aged 44-60 experiencing joint pain and discomfort." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5NmuztZ7BtgXXs2pbvTf30blCOf1/social-images/social-1781756918010-1000421537.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5NmuztZ7BtgXXs2pbvTf30blCOf1/social-images/social-1781756918010-1000421537.webp" },
+      { name: "google-site-verification", content: "Emv57POwospRsBggWH2MTWSOHhWyGwMFUJSWKyy4s3I" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        async: true,
+        src: "https://www.googletagmanager.com/gtag/js?id=G-B2FL5W08KR",
+      },
+      {
+        children:
+          "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B2FL5W08KR');",
+      },
+      {
+        children:
+          "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KLSPTWRM');",
       },
     ],
   }),
@@ -110,6 +125,14 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KLSPTWRM"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         {children}
         <Scripts />
       </body>
