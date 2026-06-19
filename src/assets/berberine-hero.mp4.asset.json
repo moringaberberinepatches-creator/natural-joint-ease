@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "aef637bc-6627-4f9a-bc84-42028c4a46e7",
-  "project_id": "f3dec4d0-52fc-4e4d-a77b-acf8fee0a5db",
-  "url": "/__l5e/assets-v1/aef637bc-6627-4f9a-bc84-42028c4a46e7/berberine-hero.mp4",
-  "r2_key": "a/v1/f3dec4d0-52fc-4e4d-a77b-acf8fee0a5db/aef637bc-6627-4f9a-bc84-42028c4a46e7/berberine-hero.mp4",
-  "original_filename": "berberine-hero.mp4",
-  "size": 308502,
   "content_type": "video/mp4",
-  "created_at": "2026-06-17T21:21:06Z"
+  "created_at": "2026-06-17T21:21:06Z",
+  "original_filename": "berberine-hero.mp4",
+  "project_id": "3ccfef8e-c651-4f20-a6a0-0844eb77ebba",
+  "r2_key": "a/v1/3ccfef8e-c651-4f20-a6a0-0844eb77ebba/aef637bc-6627-4f9a-bc84-42028c4a46e7/berberine-hero.mp4",
+  "size": 308502,
+  "url": "/__l5e/assets-v1/aef637bc-6627-4f9a-bc84-42028c4a46e7/berberine-hero.mp4",
+  "version": 1
 }

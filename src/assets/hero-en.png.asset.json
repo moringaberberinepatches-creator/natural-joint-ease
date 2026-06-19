@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "4e442e7c-381b-4927-bf4b-cc8a5035ea7a",
-  "project_id": "f3dec4d0-52fc-4e4d-a77b-acf8fee0a5db",
-  "url": "/__l5e/assets-v1/4e442e7c-381b-4927-bf4b-cc8a5035ea7a/hero-en.png",
-  "r2_key": "a/v1/f3dec4d0-52fc-4e4d-a77b-acf8fee0a5db/4e442e7c-381b-4927-bf4b-cc8a5035ea7a/hero-en.png",
-  "original_filename": "hero-en.png",
-  "size": 2300215,
   "content_type": "image/png",
-  "created_at": "2026-06-19T04:37:14Z"
+  "created_at": "2026-06-19T04:37:14Z",
+  "original_filename": "hero-en.png",
+  "project_id": "3ccfef8e-c651-4f20-a6a0-0844eb77ebba",
+  "r2_key": "a/v1/3ccfef8e-c651-4f20-a6a0-0844eb77ebba/4e442e7c-381b-4927-bf4b-cc8a5035ea7a/hero-en.png",
+  "size": 2300215,
+  "url": "/__l5e/assets-v1/4e442e7c-381b-4927-bf4b-cc8a5035ea7a/hero-en.png",
+  "version": 1
 }
