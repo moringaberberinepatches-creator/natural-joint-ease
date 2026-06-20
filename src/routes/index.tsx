@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import produto from "@/assets/produto-real.png";
-import heroEn from "@/assets/hero-en.png.asset.json";
-import heroPt from "@/assets/hero-pt.png.asset.json";
+import heroEn from "@/assets/hero-en.png";
+import heroPt from "@/assets/hero-pt.png";
 import baSarah from "@/assets/before-after-sarah.jpg";
 import baLinda from "@/assets/before-after-linda.jpg";
 import baJessica from "@/assets/before-after-jessica.jpg";
@@ -354,10 +354,10 @@ const COPY = {
   },
 } as const;
 
-function Index() {
+export function Index() {
   const [lang, setLang] = useState<Lang>("en");
   const t = COPY[lang];
-  const heroImg = lang === "en" ? heroEn.url : heroPt.url;
+  const heroImg = lang === "en" ? heroEn : heroPt;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
