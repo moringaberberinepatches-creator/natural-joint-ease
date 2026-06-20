@@ -58,7 +58,7 @@ export const Route = createFileRoute("/")({
         content:
           "Does the Purisaki Berberine Patch really work? Burn stubborn belly fat, balance blood sugar and reclaim your confidence — risk-free for 30 days.",
       },
-      { property: "og:url", content: "https://berberinepurisaki.lovable.app/" },
+      { property: "og:url", content: "https://moringaberberinepatches.com/" },
       { property: "og:image", content: produto },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Purisaki Berberine Patch — Real Reviews & Results" },
@@ -69,7 +69,7 @@ export const Route = createFileRoute("/")({
       },
       { name: "twitter:image", content: produto },
     ],
-    links: [{ rel: "canonical", href: "https://berberinepurisaki.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://moringaberberinepatches.com/" }],
     scripts: [
       {
         type: "application/ld+json",
