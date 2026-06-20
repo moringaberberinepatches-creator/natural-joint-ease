@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import produto from "@/assets/produto-real.png";
-import heroEn from "@/assets/hero-en.png.asset.json";
-import heroPt from "@/assets/hero-pt.png.asset.json";
+import heroEn from "@/assets/hero-en.png";
+import heroPt from "@/assets/hero-pt.png";
 import baSarah from "@/assets/before-after-sarah.jpg";
 import baLinda from "@/assets/before-after-linda.jpg";
 import baJessica from "@/assets/before-after-jessica.jpg";
@@ -58,7 +58,7 @@ export const Route = createFileRoute("/")({
         content:
           "Does the Purisaki Berberine Patch really work? Burn stubborn belly fat, balance blood sugar and reclaim your confidence — risk-free for 30 days.",
       },
-      { property: "og:url", content: "https://berberinepurisaki.lovable.app/" },
+      { property: "og:url", content: "https://moringaberberinepatches.com/" },
       { property: "og:image", content: produto },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Purisaki Berberine Patch — Real Reviews & Results" },
@@ -69,7 +69,7 @@ export const Route = createFileRoute("/")({
       },
       { name: "twitter:image", content: produto },
     ],
-    links: [{ rel: "canonical", href: "https://berberinepurisaki.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://moringaberberinepatches.com/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -354,10 +354,10 @@ const COPY = {
   },
 } as const;
 
-function Index() {
+export function Index() {
   const [lang, setLang] = useState<Lang>("en");
   const t = COPY[lang];
-  const heroImg = lang === "en" ? heroEn.url : heroPt.url;
+  const heroImg = lang === "en" ? heroEn : heroPt;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
