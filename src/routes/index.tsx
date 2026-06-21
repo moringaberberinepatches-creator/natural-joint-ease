@@ -39,35 +39,36 @@ const OFFICIAL_URL =
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Purisaki Berberine Patch Reviews — Does It Really Work? (2026)" },
+      { title: "Berberine Patch: Adesivo Natural para Emagrecimento — Alternativa ao Ozempic" },
       {
         name: "description",
         content:
-          "Purisaki Berberine Patch reviews: how the transdermal berberine weight-loss patch works, real before/after results, side effects, and 30-day money-back guarantee. Official site only.",
+          "Berberine Patch: adesivo natural para emagrecimento que acelera o metabolismo. Alternativa ao Ozempic sem agulhas, com garantia de 30 dias. Nature's Ozempic com berberina e suporte GLP-1 natural.",
       },
       {
         name: "keywords",
         content:
-          "purisaki, purisaki patches, purisaki berberine patch, purisaki berberine patches, berberine patch, berberine patches, berberine patches reviews, berberine patch reviews, do berberine patches work, do purisaki patches work, do purisaki berberine patches work, are purisaki patches legit, is purisaki legit, is the purisaki patch a scam, berberine, berberine benefits, berberine side effects, berberine supplement, berberine weight loss, berberine for weight loss, berberine weight loss patches, can berberine be absorbed through the skin, slim patch reviews consumer reports, slim detox patches, glp 1 patches, glp-1 patch, kind patches, how to use purisaki berberine patches, what is purisaki berberine patch",
+          "berberine patch, adesivo berberina, adesivo natural para emagrecimento, alternativa ao ozempic, ozempic natural, alternativa natural ao ozempic, nature's ozempic, natures ozempic, mounjaro natural, alternativa ao mounjaro, berberina, berberina emagrecimento, berberina para emagrecer, berberina ozempic, emagrecer com berberina, perda de peso com berberina, glp-1 natural, suporte glp-1 natural, alternativa glp-1, acelerar metabolismo, emagrecimento natural, adesivo emagrecedor, purisaki, purisaki berberine patch, berberine patches reviews, do berberine patches work",
       },
       { name: "robots", content: "index,follow,max-image-preview:large" },
       { property: "og:type", content: "product" },
-      { property: "og:title", content: "Purisaki Berberine Patch — Real Reviews, Real Results, 30-Day Guarantee" },
+      { property: "og:title", content: "Berberine Patch — Adesivo Natural para Emagrecimento • Alternativa ao Ozempic" },
       {
         property: "og:description",
         content:
-          "Does the Purisaki Berberine Patch really work? Burn stubborn belly fat, balance blood sugar and reclaim your confidence — risk-free for 30 days.",
+          "Adesivo natural com berberina que acelera o metabolismo. Nature's Ozempic sem agulhas, com suporte GLP-1 natural e garantia de 30 dias.",
       },
       { property: "og:url", content: "https://moringaberberinepatches.com/" },
       { property: "og:image", content: produto },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Purisaki Berberine Patch — Real Reviews & Results" },
+      { name: "twitter:title", content: "Berberine Patch — Alternativa Natural ao Ozempic" },
       {
         name: "twitter:description",
         content:
-          "The transdermal berberine patch for weight management. 30-day money-back guarantee on the official site.",
+          "Adesivo natural com berberina para emagrecimento. Suporte GLP-1 natural, sem agulhas, com garantia de 30 dias.",
       },
       { name: "twitter:image", content: produto },
+
     ],
     links: [{ rel: "canonical", href: "https://moringaberberinepatches.com/" }],
     scripts: [
