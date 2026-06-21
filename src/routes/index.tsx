@@ -249,12 +249,13 @@ const COPY = {
     heroTitle2: "que ele não",
     heroTitle3: "consegue parar de olhar.",
     heroSub:
-      "Milhares de mulheres acima dos 40 trocaram remédios pesados e dietas impossíveis pelo",
-    heroSubStrong: " Berberine Patch ",
+      "Milhares de mulheres acima dos 40 trocaram o Ozempic, o Mounjaro e dietas impossíveis pelo",
+    heroSubStrong: " Berberine Patch — o adesivo natural para emagrecimento ",
     heroSubEnd:
-      "— um adesivo discreto que age 24h por dia através da tecnologia transdérmica.",
-    heroSubEm: "Veja por que virou febre nos Estados Unidos.",
+      "com berberina, considerado o Nature's Ozempic: acelera o metabolismo 24h por dia através de tecnologia transdérmica, sem agulhas e sem comprimidos.",
+    heroSubEm: "Alternativa natural ao Ozempic e suporte GLP-1 natural — veja por que virou febre nos EUA.",
     ctaHero: "Acessar site oficial",
+
     rating: "4.9/5 • milhares de mulheres satisfeitas",
     trust: [
       { t: "Frete Grátis" },
