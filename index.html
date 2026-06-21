@@ -22,7 +22,71 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-B2FL5W08KR');
+
+      // ===== Rastreamento máximo: capturar origem do visitante =====
+      (function(){
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var ref = document.referrer || '';
+          var refHost = '';
+          try { refHost = ref ? new URL(ref).hostname : ''; } catch(e){}
+
+          var engines = {google:'Google',bing:'Bing',yahoo:'Yahoo',duckduckgo:'DuckDuckGo',yandex:'Yandex',ecosia:'Ecosia',brave:'Brave',baidu:'Baidu'};
+          var searchEngine = '';
+          for (var k in engines) { if (refHost.indexOf(k) !== -1) { searchEngine = engines[k]; break; } }
+          var organicTerm = '';
+          if (ref) { try { var r = new URL(ref); organicTerm = r.searchParams.get('q') || r.searchParams.get('query') || r.searchParams.get('p') || ''; } catch(e){} }
+
+          var ts = {
+            utm_source:   params.get('utm_source')   || (searchEngine ? searchEngine.toLowerCase() : (refHost || 'direct')),
+            utm_medium:   params.get('utm_medium')   || (searchEngine ? 'organic' : (refHost ? 'referral' : 'none')),
+            utm_campaign: params.get('utm_campaign') || '(not set)',
+            utm_term:     params.get('utm_term')     || organicTerm || '(not provided)',
+            utm_content:  params.get('utm_content')  || '(not set)',
+            gclid:        params.get('gclid')        || '',
+            fbclid:       params.get('fbclid')       || '',
+            referrer:     ref,
+            referrer_host: refHost,
+            search_engine: searchEngine,
+            organic_search_term: organicTerm,
+            landing_page: window.location.pathname + window.location.search,
+            landing_url:  window.location.href
+          };
+
+          try {
+            if (!localStorage.getItem('first_touch')) {
+              localStorage.setItem('first_touch', JSON.stringify(Object.assign({ts:Date.now()}, ts)));
+            }
+            sessionStorage.setItem('last_touch', JSON.stringify(ts));
+          } catch(e){}
+
+          var ft = {}; try { ft = JSON.parse(localStorage.getItem('first_touch')||'{}'); } catch(e){}
+          gtag('set', 'user_properties', {
+            first_utm_source:   ft.utm_source   || ts.utm_source,
+            first_utm_medium:   ft.utm_medium   || ts.utm_medium,
+            first_utm_campaign: ft.utm_campaign || ts.utm_campaign,
+            first_utm_term:     ft.utm_term     || ts.utm_term,
+            last_search_engine: ts.search_engine,
+            last_organic_term:  ts.organic_search_term
+          });
+
+          gtag('config', 'G-B2FL5W08KR', {
+            page_location: window.location.href,
+            page_referrer: ref,
+            campaign_source:  ts.utm_source,
+            campaign_medium:  ts.utm_medium,
+            campaign_name:    ts.utm_campaign,
+            campaign_term:    ts.utm_term,
+            campaign_content: ts.utm_content
+          });
+
+          gtag('event', 'traffic_source_captured', ts);
+          window.dataLayer.push(Object.assign({ event: 'traffic_source' }, ts));
+          window.__trafficSource = ts;
+        } catch(err) {
+          gtag('config', 'G-B2FL5W08KR');
+        }
+      })();
     </script>
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KLSPTWRM');
