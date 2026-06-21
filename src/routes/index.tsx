@@ -249,12 +249,13 @@ const COPY = {
     heroTitle2: "que ele não",
     heroTitle3: "consegue parar de olhar.",
     heroSub:
-      "Milhares de mulheres acima dos 40 trocaram remédios pesados e dietas impossíveis pelo",
-    heroSubStrong: " Berberine Patch ",
+      "Milhares de mulheres acima dos 40 trocaram o Ozempic, o Mounjaro e dietas impossíveis pelo",
+    heroSubStrong: " Berberine Patch — o adesivo natural para emagrecimento ",
     heroSubEnd:
-      "— um adesivo discreto que age 24h por dia através da tecnologia transdérmica.",
-    heroSubEm: "Veja por que virou febre nos Estados Unidos.",
+      "com berberina, considerado o Nature's Ozempic: acelera o metabolismo 24h por dia através de tecnologia transdérmica, sem agulhas e sem comprimidos.",
+    heroSubEm: "Alternativa natural ao Ozempic e suporte GLP-1 natural — veja por que virou febre nos EUA.",
     ctaHero: "Acessar site oficial",
+
     rating: "4.9/5 • milhares de mulheres satisfeitas",
     trust: [
       { t: "Frete Grátis" },
@@ -299,20 +300,21 @@ const COPY = {
     solTitle1: "Conheça o",
     solTitleEm: "Berberine Patch.",
     solDesc:
-      "Um adesivo discreto que libera Berberina pura direto pela sua pele — o composto natural que cientistas compararam à Metformina em estudos clínicos. Sem comprimidos. Sem náuseas. Sem esforço.",
+      "O Berberine Patch é um adesivo natural para emagrecimento que libera berberina pura direto pela pele — o composto que cientistas chamam de Nature's Ozempic por oferecer suporte GLP-1 natural e ser comparado à Metformina, ao Ozempic e ao Mounjaro em estudos clínicos. Emagrecer com berberina ficou simples: sem agulhas, sem comprimidos, sem náusea.",
     solBullets: [
-      "Açúcar no sangue estável o dia inteiro.",
-      "Menos vontade de doce e beliscos à noite.",
-      "Gordura da barriga derretendo semana após semana.",
-      "Energia constante — sem queda à tarde.",
-      "Suas roupas favoritas servindo de novo — sem dietas de tortura.",
+      "Alternativa natural ao Ozempic e ao Mounjaro — sem agulhas.",
+      "Berberina para emagrecer com liberação contínua 24h.",
+      "Acelera o metabolismo e ajuda a queimar a gordura da barriga.",
+      "Suporte GLP-1 natural — menos fome e menos vontade de doce.",
+      "Garantia de 30 dias: emagrecimento natural e sem risco.",
     ],
     ctaSol: "Ver oferta no site oficial",
     benefitsTitle1: "Por que o",
     benefitsTitleEm: "Berberine Patch",
-    benefitsTitle2: "funciona",
+    benefitsTitle2: "é o Nature's Ozempic",
     benefitsSub:
-      "Liberação contínua de berberina pela pele — sem perder potência no estômago.",
+      "Berberina com liberação contínua pela pele — alternativa natural ao Ozempic e Mounjaro, com suporte GLP-1 natural e sem perder potência no estômago.",
+
     benefits: [
       { img: benefitBloodSugar, title: "Equilibra a Glicose", text: "A berberina é estudada há anos pelo seu efeito direto no metabolismo da glicose." },
       { img: benefitBurnFat, title: "Queima Gordura Teimosa", text: "Ajuda o corpo a usar gordura como combustível — principalmente barriga e quadril." },
