@@ -559,42 +559,8 @@ export function Index() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="px-4 py-20 bg-gradient-to-b from-black via-zinc-950 to-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-black uppercase">
-              {t.benefitsTitle1} <span className="text-gradient-orange">{t.benefitsTitleEm}</span> {t.benefitsTitle2}
-            </h2>
-            <p className="mt-4 text-lg text-white/70">{t.benefitsSub}</p>
-          </div>
 
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {t.benefits.map(({ img, title, text }) => (
-              <div
-                key={title}
-                className="bg-card border border-white/5 rounded-2xl p-6 transition hover:-translate-y-1 hover:border-orange-500/40"
-              >
-                <div
-                  className="w-full h-40 rounded-2xl overflow-hidden mb-4 border border-white/10"
-                  style={{ boxShadow: "0 8px 24px -8px rgba(255,90,30,0.35)" }}
-                >
-                  <img
-                    src={img}
-                    alt={title}
-                    loading="lazy"
-                    width={512}
-                    height={512}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl text-white">{title}</h3>
-                <p className="mt-2 text-white/65">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Testimonials */}
       <section className="px-4 py-20">
