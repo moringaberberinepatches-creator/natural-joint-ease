@@ -565,6 +565,11 @@ export function Index() {
         </div>
       </section>
 
+      {/* Product Carousel */}
+      <ProductCarousel lang={lang} />
+
+
+
 
 
 
