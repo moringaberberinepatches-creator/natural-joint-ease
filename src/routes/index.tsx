@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import produto from "@/assets/produto-real.png";
 import heroEn from "@/assets/hero-en.png";
 import heroPt from "@/assets/hero-pt.png";
@@ -695,7 +695,18 @@ function ProductCarousel({ lang }: { lang: Lang }) {
       ];
 
   const [idx, setIdx] = useState(0);
-  const go = (n: number) => setIdx((idx + n + slides.length) % slides.length);
+  const touchStartX = useRef<number | null>(null);
+  const go = (n: number) => setIdx((prev) => (prev + n + slides.length) % slides.length);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchStartX.current = null;
+  };
 
   return (
     <section className="px-4 py-20 bg-gradient-to-b from-black via-zinc-950 to-black">
@@ -716,15 +727,27 @@ function ProductCarousel({ lang }: { lang: Lang }) {
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-950">
+          <div
+            className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 touch-pan-y select-none"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${idx * 100}%)` }}
             >
-              {slides.map((s) => (
+              {slides.map((s, i) => (
                 <div key={s.title} className="min-w-full grid md:grid-cols-2">
                   <div className="bg-white aspect-square md:aspect-auto md:min-h-[460px] flex items-center justify-center p-6">
-                    <img src={s.img} alt={s.title} className="w-full h-full object-contain" loading="lazy" />
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      className="max-w-full max-h-full object-contain"
+                      loading={i === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                      draggable={false}
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.3"; }}
+                    />
                   </div>
                   <div className="p-8 md:p-12 flex flex-col justify-center">
                     <h3 className="text-2xl md:text-3xl font-black text-white">{s.title}</h3>
@@ -744,16 +767,18 @@ function ProductCarousel({ lang }: { lang: Lang }) {
           </div>
 
           <button
+            type="button"
             onClick={() => go(-1)}
-            aria-label="Prev"
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-orange-500 text-white w-11 h-11 rounded-full flex items-center justify-center border border-white/20"
+            aria-label="Anterior"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-orange-500 hover:bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg shadow-orange-500/40"
           >
             ‹
           </button>
           <button
+            type="button"
             onClick={() => go(1)}
-            aria-label="Next"
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-orange-500 text-white w-11 h-11 rounded-full flex items-center justify-center border border-white/20"
+            aria-label="Próximo"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-orange-500 hover:bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg shadow-orange-500/40"
           >
             ›
           </button>
@@ -762,6 +787,7 @@ function ProductCarousel({ lang }: { lang: Lang }) {
             {slides.map((_, i) => (
               <button
                 key={i}
+                type="button"
                 onClick={() => setIdx(i)}
                 aria-label={`Slide ${i + 1}`}
                 className={`h-2 rounded-full transition-all ${i === idx ? "w-8 bg-orange-500" : "w-2 bg-white/30"}`}
@@ -769,6 +795,7 @@ function ProductCarousel({ lang }: { lang: Lang }) {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
