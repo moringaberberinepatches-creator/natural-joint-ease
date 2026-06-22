@@ -13,6 +13,12 @@ import benefitTransdermal from "@/assets/benefit-transdermal.jpg";
 import benefitEnergy from "@/assets/benefit-energy.jpg";
 import benefitNatural from "@/assets/benefit-natural.jpg";
 import benefitNoPills from "@/assets/benefit-no-pills.jpg";
+import productPouch from "@/assets/produto-pouch.webp.asset.json";
+import productAntesDepois from "@/assets/produto-antes-depois.webp.asset.json";
+import productMedidas from "@/assets/produto-medidas.webp.asset.json";
+import productDiscreto from "@/assets/produto-discreto.webp.asset.json";
+import productDesign from "@/assets/produto-design.webp.asset.json";
+import productIngredientes from "@/assets/produto-ingredientes.webp.asset.json";
 import {
   ShieldCheck,
   Flame,
@@ -559,6 +565,11 @@ export function Index() {
         </div>
       </section>
 
+      {/* Product Carousel */}
+      <ProductCarousel lang={lang} />
+
+
+
 
 
 
@@ -662,3 +673,104 @@ export function Index() {
     </main>
   );
 }
+
+
+function ProductCarousel({ lang }: { lang: Lang }) {
+  const slides = lang === "pt"
+    ? [
+        { img: productPouch.url, title: "Berberine Patch Original", text: "Programa de 30 dias — 30 adesivos transdérmicos com berberina, fucoxantina, romã e bioperina. O Nature's Ozempic que age 24h por dia." },
+        { img: productAntesDepois.url, title: "Resultados Reais e Visíveis", text: "Mulheres reais relatam barriga mais lisa, menos vontade de doce e mais energia em poucas semanas. Sem dieta extrema, sem agulhas." },
+        { img: productIngredientes.url, title: "Fórmula Natural Premium", text: "Ingredientes botânicos que ativam o metabolismo suavemente, suportam o GLP-1 natural e refinam a silhueta com conforto." },
+        { img: productDesign.url, title: "Tecnologia Transdérmica", text: "Adesivo fino que cola firme, libera o ativo direto na corrente sanguínea pela pele — sem irritar o estômago, sem comprimido, sem náusea." },
+        { img: productDiscreto.url, title: "Discreto e Invisível", text: "Fino, sem cheiro, invisível embaixo de qualquer roupa. Use no trabalho, na academia ou dormindo. Cole e esqueça." },
+        { img: productMedidas.url, title: "Caixa de 30 Unidades", text: "30 adesivos por caixa = 1 mês completo de programa. 7cm de diâmetro, prontos para começar a sua transformação hoje." },
+      ]
+    : [
+        { img: productPouch.url, title: "Berberine Patch Original", text: "30-day program — 30 transdermal patches with berberine, fucoxanthin, pomegranate & bioperine. Nature's Ozempic working 24/7." },
+        { img: productAntesDepois.url, title: "Real, Visible Results", text: "Real women report a flatter belly, fewer cravings and more energy in weeks. No extreme diets. No needles." },
+        { img: productIngredientes.url, title: "Premium Natural Formula", text: "Botanical actives that gently fire up metabolism, support natural GLP-1 and refine your silhouette comfortably." },
+        { img: productDesign.url, title: "Transdermal Technology", text: "Thin patch that sticks firmly and delivers actives through the skin — no stomach upset, no pills, no nausea." },
+        { img: productDiscreto.url, title: "Discreet & Invisible", text: "Thin, odorless, invisible under any outfit. Wear it at work, at the gym, while you sleep. Stick it and forget it." },
+        { img: productMedidas.url, title: "30-Patch Box", text: "30 patches per box = a full 30-day program. 7cm diameter, ready to start your transformation today." },
+      ];
+
+  const [idx, setIdx] = useState(0);
+  const go = (n: number) => setIdx((idx + n + slides.length) % slides.length);
+
+  return (
+    <section className="px-4 py-20 bg-gradient-to-b from-black via-zinc-950 to-black">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="inline-flex items-center gap-2 text-orange-400 text-sm font-bold uppercase tracking-wider">
+            <Sparkles className="w-4 h-4" /> {lang === "pt" ? "Conheça o Produto" : "Meet the Product"}
+          </span>
+          <h2 className="mt-4 text-3xl md:text-5xl font-black uppercase">
+            {lang === "pt" ? "Por Dentro do " : "Inside the "}
+            <span className="text-gradient-orange">Berberine Patch</span>
+          </h2>
+          <p className="mt-4 text-lg text-white/70">
+            {lang === "pt"
+              ? "Deslize e veja cada detalhe do adesivo que está virando obsessão das mulheres que querem emagrecer sem agulhas."
+              : "Swipe and see every detail of the patch women everywhere are obsessing over to lose weight without needles."}
+          </p>
+        </div>
+
+        <div className="relative">
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-950">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${idx * 100}%)` }}
+            >
+              {slides.map((s) => (
+                <div key={s.title} className="min-w-full grid md:grid-cols-2">
+                  <div className="bg-white aspect-square md:aspect-auto md:min-h-[460px] flex items-center justify-center p-6">
+                    <img src={s.img} alt={s.title} className="w-full h-full object-contain" loading="lazy" />
+                  </div>
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <h3 className="text-2xl md:text-3xl font-black text-white">{s.title}</h3>
+                    <p className="mt-4 text-white/75 text-lg leading-relaxed">{s.text}</p>
+                    <a
+                      href={OFFICIAL_URL}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className="btn-orange mt-8 inline-flex items-center gap-2 self-start"
+                    >
+                      {lang === "pt" ? "Quero o meu agora" : "I want mine now"} <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={() => go(-1)}
+            aria-label="Prev"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-orange-500 text-white w-11 h-11 rounded-full flex items-center justify-center border border-white/20"
+          >
+            ‹
+          </button>
+          <button
+            onClick={() => go(1)}
+            aria-label="Next"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-orange-500 text-white w-11 h-11 rounded-full flex items-center justify-center border border-white/20"
+          >
+            ›
+          </button>
+
+          <div className="flex justify-center gap-2 mt-6">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIdx(i)}
+                aria-label={`Slide ${i + 1}`}
+                className={`h-2 rounded-full transition-all ${i === idx ? "w-8 bg-orange-500" : "w-2 bg-white/30"}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
