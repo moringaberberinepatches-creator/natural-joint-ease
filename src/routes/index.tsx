@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import produto from "@/assets/produto-real.png";
 import heroEn from "@/assets/hero-en.png";
 import heroPt from "@/assets/hero-pt.png";
