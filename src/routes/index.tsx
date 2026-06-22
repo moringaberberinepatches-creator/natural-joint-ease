@@ -674,7 +674,6 @@ export function Index() {
   );
 }
 
-type Lang = "en" | "pt";
 
 function ProductCarousel({ lang }: { lang: Lang }) {
   const slides = lang === "pt"
