@@ -13,6 +13,12 @@ import benefitTransdermal from "@/assets/benefit-transdermal.jpg";
 import benefitEnergy from "@/assets/benefit-energy.jpg";
 import benefitNatural from "@/assets/benefit-natural.jpg";
 import benefitNoPills from "@/assets/benefit-no-pills.jpg";
+import productPouch from "@/assets/produto-pouch.webp.asset.json";
+import productAntesDepois from "@/assets/produto-antes-depois.webp.asset.json";
+import productMedidas from "@/assets/produto-medidas.webp.asset.json";
+import productDiscreto from "@/assets/produto-discreto.webp.asset.json";
+import productDesign from "@/assets/produto-design.webp.asset.json";
+import productIngredientes from "@/assets/produto-ingredientes.webp.asset.json";
 import {
   ShieldCheck,
   Flame,
